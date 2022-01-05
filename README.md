@@ -18,7 +18,7 @@
 
 ## Introduction
 
-**qbic-pipelines/root-tissue-analysis** is a bioinformatics best-practice analysis pipeline for root tissue analysis of *A. thaliana.* based on pH measurement collected using fluorescence microscopy. This pipeline aims to analyze data to test the acid-growth hypothesis, which explains the expansion of cells in root tissue. This acid-growth pathway model needs pH measurement data for validation, however data generation is time consuming, since manual image segmentation is a mayor bottle-neck. This pipeline provides automatic segmentation using U-Net models, previously trained on a dataset generated and annotated by experienced plant biologists (https://github.com/qbic-pipelines/root-tissue-segmentation-core/).
+**qbic-pipelines/root-tissue-analysis** is a bioinformatics best-practice analysis pipeline for root tissue analysis of *A. thaliana.* based on pH measurement collected using fluorescence microscopy. This pipeline aims to analyze data to test the acid-growth hypothesis, which explains the expansion of cells in root tissue. This acid-growth pathway model needs pH measurement data for validation, however data generation is time consuming, since manual image segmentation is a mayor bottle-neck. This pipeline provides automatic, multi-class tissue segmentation (5 clases) using U-Net models, previously trained on a dataset generated and annotated by experienced plant biologists (https://github.com/qbic-pipelines/root-tissue-segmentation-core/).
 
 <p align="center">
     <img src="docs/images/bio_background.png" alt="qbic-pipelines/root-tissue-analysis biological background" width="100%">
