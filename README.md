@@ -41,7 +41,7 @@ This pipeline was created using [nf-core tools](https://nf-co.re/) and aims to a
 3. Download the pipeline and test it on a minimal dataset with a single command:
 
     ```console
-    nextflow run nf-core/rts -profile test,<docker/singularity/podman/shifter/charliecloud/conda/institute>
+    nextflow run qbic-pipelines/root-tissue-analysis -profile test,<docker/singularity/podman/shifter/charliecloud/conda/institute>
     ```
 
     > * Please check [nf-core/configs](https://github.com/nf-core/configs#documentation) to see if a custom config file to run nf-core pipelines already exists for your Institute. If so, you can simply use `-profile <institute>` in your command. This will enable either `docker` or `singularity` and set the appropriate execution settings for your local compute environment.
@@ -51,24 +51,20 @@ This pipeline was created using [nf-core tools](https://nf-co.re/) and aims to a
 4. Start running your own analysis!
 
     ```console
-    nextflow run nf-core/rts -profile <docker/singularity/podman/shifter/charliecloud/conda/institute> --input folder
+    nextflow run qbic-pipelines/root-tissue-analysis -profile <docker/singularity/podman/shifter/charliecloud/conda/institute> --input folder
     ```
 
 ## Documentation
 
-The nf-core/rts pipeline comes with documentation about the pipeline [usage](https://nf-co.re/rts/usage), [parameters](https://nf-co.re/rts/parameters) and [output](https://nf-co.re/rts/output).
+The qbic-pipelines/root-tissue-analysis pipeline comes with documentation about the pipeline [usage](https://github.com/qbic-pipelines/root-tissue-analysis), [parameters](https://github.com/qbic-pipelines/root-tissue-analysis) and [output](https://github.com/qbic-pipelines/root-tissue-analysis).
 
 ## Credits
 
-nf-core/rts was originally written by Julian Wanner.
-
-We thank the following people for their extensive assistance in the development of this pipeline:
+qbic-pipelines/root-tissue-analysis was originally written by Julian Wanner.
 
 ## Contributions and Support
 
 If you would like to contribute to this pipeline, please see the [contributing guidelines](.github/CONTRIBUTING.md).
-
-For further information or help, don't hesitate to get in touch on the [Slack `#rts` channel](https://nfcore.slack.com/channels/rts) (you can join with [this invite](https://nf-co.re/join/slack)).
 
 ## Citations
 
