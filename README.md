@@ -20,6 +20,10 @@
 
 **qbic-pipelines/root-tissue-analysis** is a bioinformatics best-practice analysis pipeline for root tissue analysis of *A. thaliana.* based on pH measurement collected using fluorescence microscopy. This pipeline aims to analyze data to test the acid-growth hypothesis, which explains the expansion of cells in root tissue. This acid-growth pathway model needs pH measurement data for validation, however data generation is time consuming, since manual image segmentation is a mayor bottle-neck. This pipeline provides automatic segmentation using U-Net models, previously trained on a dataset generated and annotated by experienced plant biologists (https://github.com/qbic-pipelines/root-tissue-segmentation-core/).
 
+<p align="center">
+    <img src="docs/images/bio_background.png" alt="qbic-pipelines/root-tissue-analysis biological background" width="100%">
+</p>
+
 This pipeline was created using [nf-core tools](https://nf-co.re/) and aims to adhere to its reproducibility standards. The pipeline is built using [Nextflow](https://www.nextflow.io), a workflow tool to run tasks across multiple compute infrastructures in a very portable manner. It uses Docker/Singularity containers making installation trivial and results highly reproducible. The [Nextflow DSL2](https://www.nextflow.io/docs/latest/dsl2.html) implementation of this pipeline uses one container per process which makes it much easier to maintain and update software dependencies. Where possible, these processes have been submitted to and installed from [nf-core/modules](https://github.com/nf-core/modules) in order to make them available to all nf-core pipelines, and to everyone within the Nextflow community!
 
 <p align="center">
