@@ -1,4 +1,6 @@
-# ![nf-core/rts](docs/images/nf-core-rts_logo.png)
+# ![qbic-pipelines/root-tissue-analysis](docs/images/nf-core-rts_logo.png)
+
+**A reproducible analysis pipeline of pH measurement derived from fluorescence microscopy images of *A. thaliana.* root tissue samples**.
 
 [![GitHub Actions CI Status](https://github.com/nf-core/rts/workflows/nf-core%20CI/badge.svg)](https://github.com/nf-core/rts/actions?query=workflow%3A%22nf-core+CI%22)
 [![GitHub Actions Linting Status](https://github.com/nf-core/rts/workflows/nf-core%20linting/badge.svg)](https://github.com/nf-core/rts/actions?query=workflow%3A%22nf-core+linting%22)
@@ -16,16 +18,17 @@
 
 ## Introduction
 
-**nf-core/rts** is a bioinformatics best-practice analysis pipeline for Root tissue segmentation for A. thaliana.
+**qbic-pipelines/root-tissue-analysis** is a bioinformatics best-practice analysis pipeline for root tissue analysis of *A. thaliana.* based on pH measurement collected using fluorescence microscopy. This pipeline aims to analyze data to test the acid-growth hypothesis, which explains the expansion of cells in root tissue. This acid-growth pathway model needs pH measurement data for validation, however data generation is time consuming, since manual image segmentation is a mayor bottle-neck. This pipeline provides automatic segmentation using U-Net models, previously trained on a dataset generated and annotated by experienced plant biologists (https://github.com/qbic-pipelines/root-tissue-segmentation-core/).
 
-The pipeline is built using [Nextflow](https://www.nextflow.io), a workflow tool to run tasks across multiple compute infrastructures in a very portable manner. It uses Docker/Singularity containers making installation trivial and results highly reproducible. The [Nextflow DSL2](https://www.nextflow.io/docs/latest/dsl2.html) implementation of this pipeline uses one container per process which makes it much easier to maintain and update software dependencies. Where possible, these processes have been submitted to and installed from [nf-core/modules](https://github.com/nf-core/modules) in order to make them available to all nf-core pipelines, and to everyone within the Nextflow community!
+This pipeline was created using [nf-core tools](https://nf-co.re/) and aims to adhere to its reproducibility standards. The pipeline is built using [Nextflow](https://www.nextflow.io), a workflow tool to run tasks across multiple compute infrastructures in a very portable manner. It uses Docker/Singularity containers making installation trivial and results highly reproducible. The [Nextflow DSL2](https://www.nextflow.io/docs/latest/dsl2.html) implementation of this pipeline uses one container per process which makes it much easier to maintain and update software dependencies. Where possible, these processes have been submitted to and installed from [nf-core/modules](https://github.com/nf-core/modules) in order to make them available to all nf-core pipelines, and to everyone within the Nextflow community!
 
-<!-- TODO nf-core: Add full-sized test dataset and amend the paragraph below if applicable -->
-On release, automated continuous integration tests run the pipeline on a full-sized dataset on the AWS cloud infrastructure. This ensures that the pipeline runs on AWS, has sensible resource allocation defaults set to run on real-world datasets, and permits the persistent storage of results to benchmark between pipeline releases and other analysis sources. The results obtained from the full-sized test can be viewed on the [nf-core website](https://nf-co.re/rts/results).
+<p align="center">
+    <img src="docs/images/rta-activity-diagrams.png" alt="qbic-pipelines/root-tissue-analysis activity diagram" width="100%">
+</p>
 
 ## Pipeline summary
 
-1. Segment root tissue. ([`RootSeg`],(`https://github.com/Waseju/rts_package`))
+1. Root tissue segmentation. ([`RootSeg`],(`https://github.com/qbic-pipelines/rts-prediction-package/`))
 2. Convert Ratiomeric images ([`RatioConv`])
 3. Create raw ratios and plots ([`RTSStat`])
 
