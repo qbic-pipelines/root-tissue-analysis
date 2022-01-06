@@ -1,6 +1,6 @@
 # ![qbic-pipelines/root-tissue-analysis](docs/images/nf-core-rts_logo.png)
 
-**A reproducible analysis pipeline of pH measurement derived from fluorescence microscopy images of *A. thaliana.* root tissue samples**.
+**A reproducible analysis pipeline for pH measurements derived from fluorescence microscopy of *A. thaliana.* root tissue**.
 
 [![GitHub Actions CI Status](https://github.com/nf-core/rts/workflows/nf-core%20CI/badge.svg)](https://github.com/nf-core/rts/actions?query=workflow%3A%22nf-core+CI%22)
 [![GitHub Actions Linting Status](https://github.com/nf-core/rts/workflows/nf-core%20linting/badge.svg)](https://github.com/nf-core/rts/actions?query=workflow%3A%22nf-core+linting%22)
@@ -18,7 +18,7 @@
 
 ## Introduction
 
-**qbic-pipelines/root-tissue-analysis** is a bioinformatics best-practice analysis pipeline for root tissue analysis of *A. thaliana.* based on pH measurement collected using fluorescence microscopy. This pipeline aims to analyze data to test the acid-growth hypothesis, which explains the expansion of cells in root tissue. This acid-growth pathway model needs pH measurement data for validation, however data generation is time consuming, since manual image segmentation is a mayor bottle-neck. This pipeline provides automatic, multi-class tissue segmentation (5 clases) using U-Net models, previously trained on a dataset generated and annotated by experienced plant biologists (https://github.com/qbic-pipelines/root-tissue-segmentation-core/).
+**qbic-pipelines/root-tissue-analysis** is a bioinformatics best-practice pipeline to analyze pH measurements from root tissue samples of *A. thaliana.*, these measurments are derived from fluorescence microscopy images. This pipeline aims to analyze pH measurments to validate the acid-growth hypothesis, which explains the expansion of cells in root tissue. This acid-growth pathway model needs substantial pH measurement data for validation, however this type of data generation is time consuming, since manual annotation of ROIs is a mayor bottle-neck. To mitigate this issue, the pipeline provides automatic, multi-class tissue segmentation (5 clases) using U-Net models, previously trained on a dataset generated and annotated by experienced plant biologists (https://github.com/qbic-pipelines/root-tissue-segmentation-core/).
 
 <p align="center">
     <img src="docs/images/bio_background.png" alt="qbic-pipelines/root-tissue-analysis biological background" width="100%">
