@@ -1,6 +1,6 @@
 {
-    "name": "nf-core/rts",
-    "homePage": "https://github.com/nf-core/rts",
+    "name": " root-tissue-analysis",
+    "homePage": "https://github.com/qbic-pipelines/root-tissue-analysis/",
     "repos": {
         "nf-core/modules": {
             "rootseg": {

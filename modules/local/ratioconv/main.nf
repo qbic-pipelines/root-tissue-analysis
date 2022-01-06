@@ -11,12 +11,12 @@ process RATIOCONV {
         mode: params.publish_dir_mode,
         saveAs: { filename -> saveFiles(filename:filename, options:params.options, publish_dir:getSoftwareName(task.process), meta:[:], publish_by_meta:[]) }
     container "ghcr.io/waseju/fiji:latest"
+    containerOptions "--network=none"
 
     input:
     path input
 
     output:
-    //path "*ratioconv_report.html", emit: report
     path("*ratios") , emit: ratios
     path("*brightfields") , emit: brightfields
 
@@ -25,7 +25,7 @@ process RATIOCONV {
     """
     cp /opt/fiji/ratio_macro.ijm ./
     mkdir output
-    xvfb-run -a /opt/fiji/Fiji.app/ImageJ-linux64 --run ratio_macro.ijm 'inDir="$input/",outDir="output/"'
+    xvfb-run -a ImageJ-linux64 --run ratio_macro.ijm 'inDir="$input/",outDir="output/"'
     mkdir ratios
     mkdir brightfields
     mv output/*_ratio.tif ratios/

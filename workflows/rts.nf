@@ -57,9 +57,9 @@ ratioconv_options.args += params.ratioconv_title ? Utils.joinModuleArgs(["--titl
 //
 // MODULE: Installed directly from nf-core/modules
 //
-include { ROOTSEG  } from '../modules/nf-core/modules/rootseg/main'  addParams( options: modules['rootseg'] )
-include { RTSSTAT  } from '../modules/nf-core/modules/rtsstat/main'  addParams( options: modules['rtsstat'] )
-include { RATIOCONV } from '../modules/nf-core/modules/ratioconv/main' addParams( options: ratioconv_options   )
+include { ROOTSEG  } from '../modules/local/rootseg/main'  addParams( options: modules['rootseg'] )
+include { RTSSTAT  } from '../modules/local/rtsstat/main'  addParams( options: modules['rtsstat'] )
+include { RATIOCONV } from '../modules/local/ratioconv/main' addParams( options: ratioconv_options   )
 
 /*
 ========================================================================================
