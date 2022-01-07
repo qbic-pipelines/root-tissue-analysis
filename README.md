@@ -1,10 +1,12 @@
 <!--
-# 
+# ![qbic-pipelines/root-tissue-analysis](docs/images/qbic_logo.png)
 -->
 
-<img style="float: right;" src="docs/images/qbic_logo.png">
+<div>
+    <p style="float: left;"><img src="docs/images/qbic_logo.png" height="100px" width="100px" border="1px"></p>
+    <p><b>qbic-pipelines/root-tissue-analysis</b></p>
+</div>
 
-# ![QBiC Pipelines](docs/images/qbic_logo.png)
 # qbic-pipelines/root-tissue-analysis
 
 **A reproducible analysis pipeline for pH measurements derived from fluorescence microscopy of *A. thaliana.* root tissue**.
