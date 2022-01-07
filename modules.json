@@ -1,5 +1,5 @@
 {
-    "name": " root-tissue-analysis",
+    "name": "root-tissue-analysis",
     "homePage": "https://github.com/qbic-pipelines/root-tissue-analysis/",
     "repos": {
         "nf-core/modules": {
