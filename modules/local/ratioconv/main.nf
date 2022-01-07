@@ -10,7 +10,7 @@ process RATIOCONV {
     publishDir "${params.outdir}",
         mode: params.publish_dir_mode,
         saveAs: { filename -> saveFiles(filename:filename, options:params.options, publish_dir:getSoftwareName(task.process), meta:[:], publish_by_meta:[]) }
-    container "ghcr.io/waseju/fiji:latest"
+    container "ghcr.io/waseju/fiji@sha256:202525c92941159923b41e4de4867e3e538d65d1fd590ccc3f0798fe0cdc8cfb"
     containerOptions "--network=none"
 
     input:
