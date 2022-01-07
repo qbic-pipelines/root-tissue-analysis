@@ -2,10 +2,7 @@
 # ![qbic-pipelines/root-tissue-analysis](docs/images/qbic_logo.png)
 -->
 
-<div>
-    <p style="float: left;"><img src="docs/images/qbic_logo.png" height="100px" width="100px" border="1px"></p>
-    <p><b>qbic-pipelines/root-tissue-analysis</b></p>
-</div>
+<p style="float: left;"><img src="docs/images/qbic_logo.png" height="50px" width="50px" border="1px"></p>
 
 # qbic-pipelines/root-tissue-analysis
 
