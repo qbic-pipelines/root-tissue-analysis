@@ -4,6 +4,6 @@ FROM python:3.8.12-slim-bullseye
 RUN apt update
 RUN apt-get install -y procps wget
 RUN pip install --upgrade pip setuptools wheel
-RUN pip install rts-package=1.1.12
+RUN pip install root-tissue-seg-package=1.0.4
 
 CMD rts_package

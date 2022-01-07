@@ -6,6 +6,6 @@ RUN apk add make automake gcc g++ git
 RUN apt-get install -y procps wget
 
 RUN pip install --upgrade pip setuptools wheel
-RUN pip install rtsstat
+# RUN pip install rtsstat
 
-CMD rtsstat
+# CMD rtsstat
