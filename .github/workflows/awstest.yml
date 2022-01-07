@@ -19,10 +19,10 @@ jobs:
           compute_env: ${{ secrets.TOWER_COMPUTE_ENV }}
           pipeline: ${{ github.repository }}
           revision: ${{ github.sha }}
-          workdir: s3://${{ secrets.AWS_S3_BUCKET }}/work/root-tissue-analysis/work-${{ github.sha }}
+          workdir: s3://${{ secrets.AWS_S3_BUCKET }}/work/rts/work-${{ github.sha }}
           parameters: |
             {
-              "outdir": "s3://${{ secrets.AWS_S3_BUCKET }}/root-tissue-analysis/results-${{ github.sha }}"
+              "outdir": "s3://${{ secrets.AWS_S3_BUCKET }}/rts/results-${{ github.sha }}"
             }
           profiles: '[ "test", "aws_tower" ]'
 
