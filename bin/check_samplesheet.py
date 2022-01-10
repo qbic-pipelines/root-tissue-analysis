@@ -10,6 +10,7 @@ import shutil
 import sys
 import tarfile
 import urllib.request
+from glob import glob
 
 
 def parse_args(args=None):
@@ -47,14 +48,11 @@ def check_samplesheet(file_in: str, file_out):
 
 
     """
-    print(file_in)
-    if file_in=="testdata.tar.gz?raw=true/":
-        thetarfile = "https://github.com/Waseju/rts-pipeline/blob/d7a3a2d363190e3d490db0472ff6b97ca82bb7fd/testdata/testdata.tar.gz?raw=true"
-        ftpstream = urllib.request.urlopen(thetarfile)
-        file = tarfile.open(fileobj=ftpstream, mode="r|gz")
-        file.extractall('./')
+    if ".tar.gz" in file_in:
+        file = tarfile.open(name=file_in, mode="r|gz")
+        file.extractall('./data/')
         file.close()
-        file_in = "testdata"
+        file_in = glob("./data/*")[0]
     with open(os.path.join(f'{file_in}', 'metadata.csv'), mode='r') as metadata:
         csv_reader = csv.DictReader(metadata)
         for row in csv_reader:
