@@ -1,0 +1,17 @@
+{
+    "name": "root-tissue-analysis",
+    "homePage": "https://github.com/qbic-pipelines/root-tissue-analysis/",
+    "repos": {
+        "nf-core/modules": {
+            "rootseg": {
+                "git_sha": "6695420d7b22fdc9a6e4a9e1bdcc4901ac8bdf46"
+            },
+            "rtsstat": {
+                "git_sha": "6fe9d043205f7c8027df6082297ed7e50e2651ff"
+            },
+            "ratioconv": {
+                "git_sha": " "
+            }
+        }
+    }
+}
