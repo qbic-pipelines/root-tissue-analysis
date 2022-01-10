@@ -28,7 +28,7 @@ process ROOTSEG {
     //def prefix   = options.suffix ? "${meta.id}${options.suffix}" : "${meta.id}"
     """
     wget https://zenodo.org/record/5181261/files/model.ckpt
-    rts_package -i $brightfields -o predictions -m model.ckpt
+    rts_package -i $brightfields -o predictions -m model.ckpt --suffix ""
     """
 
 }
