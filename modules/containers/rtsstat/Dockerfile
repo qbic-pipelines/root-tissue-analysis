@@ -1,11 +1,5 @@
-FROM python:3.8.1-alpine
-
-# A few Utilities to able to install C based libraries such as numpy
-RUN apk update
-RUN apk add make automake gcc g++ git
-RUN apt-get install -y procps wget
+FROM quay.io/biocontainers/python:3.8.3
 
 RUN pip install --upgrade pip setuptools wheel
-# RUN pip install rtsstat
-
-# CMD rtsstat
+COPY requirements.txt ./
+RUN pip install --requirement requirements.txt
