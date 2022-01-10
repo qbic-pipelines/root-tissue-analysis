@@ -30,7 +30,6 @@ process RTSSTAT {
     def software = getSoftwareName(task.process)
     //def prefix   = options.suffix ? "${meta.id}${options.suffix}" : "${meta.id}"
     """
-    chmod +x rtsstat.py
     rtsstat.py --meta "$metadata/metadata.csv" --ratios "$ratios/" --segs "$predictions/"
     """
 
