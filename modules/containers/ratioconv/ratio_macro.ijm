@@ -23,7 +23,7 @@ run("Close All");
 fileList = getFileList(inDir);
 fileListOut = getFileList(outDir);
 for (i=0; i<fileList.length; i++) {
-    if (endsWith(fileList[i], ".czi")) {
+    if (endsWith(fileList[i], ".czi") || endsWith(fileList[i], ".ome.tif")) {
         showProgress(i+1, fileList.length);
         file = inDir + fileList[i];
         inFileCut = lengthOf(file)-4;
