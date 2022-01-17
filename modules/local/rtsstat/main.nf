@@ -22,6 +22,7 @@ process RTSSTAT {
     //tuple val(meta), path("*.html"), emit: html
     path("boxplot_*.pdf") , emit: boxplot
     path("ratios.csv") , emit: ratios
+    path("reporting.html") , emit: report
 
     //path  "*.version.txt"          , emit: version
 
@@ -31,6 +32,7 @@ process RTSSTAT {
     //def prefix   = options.suffix ? "${meta.id}${options.suffix}" : "${meta.id}"
     """
     rtsstat.py --meta "$metadata/metadata.csv" --ratios "$ratios/" --segs "$predictions/"
+    jupyter nbconvert --to html --execute reporting.ipynb --no-input
     """
 
 }
