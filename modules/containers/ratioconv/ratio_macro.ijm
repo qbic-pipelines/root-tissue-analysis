@@ -80,8 +80,8 @@ for (i=0; i<fileList.length; i++) {
         //run("Calibration Bar...", "location=[Upper Right] fill=White label=Black number=5 decimal=3 font=12 zoom=1");
         //saveAs("Tiff", outFile+"_calibration");
 
-        run("Close All");}
+        run("Close All");
+    }
 }
-
 
 run("Quit");
