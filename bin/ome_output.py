@@ -33,7 +33,7 @@ def main(imgs: str, ratios: str, segs: str, output: str):
         img_name_base = os.path.splitext(os.path.basename(img_path))[0]
 
         brightfield_img = tiff.imread(img_path)
-        brightfield_img = img[0, :, :] # we need only the first channel
+        brightfield_img = brightfield_img[0, :, :] # we need only the first channel
         
         ratio_img = tiff.imread(os.path.join(ratios, img_name_base + "_ratio.tif"))
         ratio_img = np.nan_to_num(ratio_img)

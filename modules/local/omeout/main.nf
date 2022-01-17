@@ -4,7 +4,7 @@ include { initOptions; saveFiles; getSoftwareName } from './functions'
 params.options = [:]
 options        = initOptions(params.options)
 
-process RTSSTAT {
+process OMEOUT {
     //tag "$meta.id"
     label 'process_low'
     publishDir "${params.outdir}",
@@ -18,13 +18,13 @@ process RTSSTAT {
     path(predictions)
 
     output:
-    path("*omeout") , emit: omeout
+    path("*ome_output_files") , emit: omeout
 
     script:
     def software = getSoftwareName(task.process)
     """
-    mkdir omeout
-    ome_output.py --imgs "$images/" --ratios "$ratios/" --segs "$predictions/" --output ./omeout
+    mkdir ome_output_files
+    ome_output.py --imgs "$images/" --ratios "$ratios/" --segs "$predictions/" --output ./ome_output_files
     """
 
 }
