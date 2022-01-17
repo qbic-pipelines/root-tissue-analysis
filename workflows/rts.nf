@@ -60,6 +60,7 @@ ratioconv_options.args += params.ratioconv_title ? Utils.joinModuleArgs(["--titl
 include { ROOTSEG  } from '../modules/local/rootseg/main'  addParams( options: modules['rootseg'] )
 include { RTSSTAT  } from '../modules/local/rtsstat/main'  addParams( options: modules['rtsstat'] )
 include { RATIOCONV } from '../modules/local/ratioconv/main' addParams( options: ratioconv_options   )
+include { OMEOUT } from '../modules/local/omeout/main' addParams( options: modules['omeout']   )
 
 /*
 ========================================================================================
@@ -95,6 +96,14 @@ workflow RTS {
         RATIOCONV.out.ratios,
         ROOTSEG.out.predictions
     )
+
+    OMEOUT(
+        RATIOCONV.out.brightfields,
+        RATIOCONV.out.ratios,
+        ROOTSEG.out.predictions
+    )
+
+    
     //ch_software_versions = ch_software_versions.mix(ROOTSEG.out.version.first().ifEmpty(null))
 
     //
