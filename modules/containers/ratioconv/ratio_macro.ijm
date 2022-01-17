@@ -29,8 +29,13 @@ for (i=0; i<fileList.length; i++) {
         inFileCut = lengthOf(file)-4;
         inFile=substring(file,0,inFileCut);
         outFileTemp = outDir + fileList[i];
+        
         cut=lengthOf(outFileTemp)-4;
+        if (endsWith(fileList[i], ".ome.tif")){
+            cut=lengthOf(outFileTemp)-8;
+        }
         outFile=substring(outFileTemp,0,cut);
+
         print("Outfile= "+outFile);
         run("Bio-Formats Importer", "open='" + file + "' color_mode=Custom view=Hyperstack stack_order=XYCZT series_0_channel_0_red=255 series_0_channel_0_green=255 series_0_channel_0_blue=255 series_0_channel_1_red=255 series_0_channel_1_green=255 series_0_channel_1_blue=255 series_0_channel_2_red=255 series_0_channel_2_green=255 series_0_channel_2_blue=255 series_0_channel_3_red=255 series_0_channel_3_green=255 series_0_channel_3_blue=255");
         saveAs("Tiff", outFile+"");
