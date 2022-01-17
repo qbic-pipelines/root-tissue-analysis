@@ -1,17 +1,13 @@
 #!/usr/bin/env python
 
-import itertools
-import os
+
 import sys
 
 import click
-import matplotlib.pyplot as plt
 import numpy as np
 import pandas as pd
-import seaborn as sns
 import tifffile as tiff
 from rich import print, traceback
-from statannotations.Annotator import Annotator
 
 
 @click.command()
@@ -28,36 +24,9 @@ def main(meta: str, ratios: str, segs: str, output: str):
 
     print('[bold blue]Run [green]rtsstat --help [blue]for an overview of all commands\n')
     df = pd.read_csv(meta, header=0)
-    sns.set(style="darkgrid", font_scale=1.5, palette="colorblind",
-            rc={"lines.linewidth": 2, 'grid.linestyle': '--'})
-    plt.rcParams["figure.figsize"] = (10 * 1.62, 10)  # (w, h)
     df["Ratio"], df["Zone"] = zip(*[(calc_ratio(ratios, segs, x)) for x in df['Filename']])
     df.to_csv("ratios.csv", index=False)
-    font_options = {
-        "axes.labelsize": 23,
-        "font.size": 23,
-        "legend.fontsize": 21,
-        'legend.title_fontsize': 23,
-        "xtick.labelsize": 21,
-        "ytick.labelsize": 21,
-    }
-    plt.rcParams.update(font_options)
-    df = df.dropna()
-    product = set(itertools.product(df['Breeding Line'], df['Treatment']))
-    box_pairs = ([(a, b) for a, b in itertools.combinations(product, 2) if a[0] == b[0]])
-    output = output.replace(" ", "_")
-    os.makedirs(output, exist_ok=True)
-    for zone in df["Zone"].unique():
-        ax = sns.boxplot(x="Breeding Line", y="Ratio", hue="Treatment",
-                         data=df[df["Zone"] == zone], showmeans=True, meanprops={"marker": "+",
-                                                                                 "markeredgecolor": "black",
-                                                                                 "markersize": "10"})
-        annotator = Annotator(ax, box_pairs, data=df, x="Breeding Line", y="Ratio", hue="Treatment")
-        annotator.configure(test='t-test_welch', show_test_name=False, text_format='simple', loc='inside')
-        annotator.apply_and_annotate()
-        plt.tight_layout()
-        plt.savefig(f'{output}/boxplot_ratio_{zone}.pdf', bbox_inches='tight')
-        plt.close()
+
 
 
 def calc_ratio(ratios, segs, x):
