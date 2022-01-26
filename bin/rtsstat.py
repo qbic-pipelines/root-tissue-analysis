@@ -25,7 +25,7 @@ def main(meta: str, ratios: str, segs: str, output: str):
     print('[bold blue]Run [green]rtsstat --help [blue]for an overview of all commands\n')
     df = pd.read_csv(meta, header=0)
     df["Ratio"], df["Zone"] = zip(*[(calc_ratio(ratios, segs, x)) for x in df['Filename']])
-    df.to_csv("ratios.csv", index=False)
+    df.to_csv("ratios.tsv", sep = '\t', index=False)
 
 
 

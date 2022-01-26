@@ -94,6 +94,7 @@ workflow RTS {
     RTSSTAT(
         INPUT_CHECK.out.reads,
         RATIOCONV.out.ratios,
+        RATIOCONV.out.brightfields,
         ROOTSEG.out.predictions
     )
 

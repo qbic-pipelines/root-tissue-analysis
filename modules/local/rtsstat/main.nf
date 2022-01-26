@@ -15,12 +15,13 @@ process RTSSTAT {
     input:
     path(metadata)
     path(ratios)
+    path(brightfield)
     path(predictions)
 
     output:
 
     //tuple val(meta), path("*.html"), emit: html
-    path("ratios.csv") , emit: ratios
+    path("ratios.tsv") , emit: ratios
     path("reporting.html") , emit: report
 
     //path  "*.version.txt"          , emit: version
@@ -31,7 +32,8 @@ process RTSSTAT {
     //def prefix   = options.suffix ? "${meta.id}${options.suffix}" : "${meta.id}"
     """
     rtsstat.py --meta "$metadata/metadata.csv" --ratios "$ratios/" --segs "$predictions/"
-    cp /reporting.ipynb ./
+    cp /reporting.ipynb ./report_wo_par.ipynb
+    papermill -p ratio_img_path $ratios/ -p pred_path $predictions/ -p img_path $brightfield/ report_wo_par.ipynb reporting.ipynb
     jupyter nbconvert --to html --execute reporting.ipynb --no-input
     """
 
