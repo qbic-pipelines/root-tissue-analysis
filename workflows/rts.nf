@@ -93,6 +93,7 @@ workflow RTS {
     RTSSTAT(
         INPUT_CHECK.out.reads,
         RATIOCONV.out.ratios,
+        RATIOCONV.out.brightfields,
         ROOTSEG.out.predictions
     )
     //ch_software_versions = ch_software_versions.mix(ROOTSEG.out.version.first().ifEmpty(null))

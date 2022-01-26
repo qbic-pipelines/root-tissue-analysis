@@ -10,4 +10,5 @@ tifffile~=2021.11.2
 statannotations~=0.4.3
 setuptools~=59.4.0
 jupyterlab~=3.2.8
+ipykernel~=6.7.0
 
