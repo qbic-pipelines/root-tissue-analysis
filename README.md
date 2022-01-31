@@ -36,9 +36,23 @@ This pipeline was created using [nf-core tools](https://nf-co.re/) and aims to a
 
 ## Pipeline summary
 
-1. Root tissue segmentation. ([`RootSeg`],(`https://github.com/qbic-pipelines/rts-prediction-package/`))
-2. Convert Ratiomeric images ([`RatioConv`])
-3. Create raw ratios and plots ([`RTSStat`])
+#### Input
+
+* Input images with 4 channels (), in `.czi` or `.ome.tif` (OME-TIFF) format
+* Metadata table in `.csv` format, with 3 columns (filename, treatment, breeding line)
+
+#### Output
+
+* Brightfield and ratiomeric images with segmentation masks. Both in `.tiff` and `.npy` formats, and integrated as channels within OME-TIFF image files (`.ome.tif` format)
+* Pipeline report in HTML format
+
+
+#### Steps
+
+1. Fiji macro for ratimeric image conversion ([`RATIOCONV`])
+2. Root tissue segmentation. ([`ROOTSEG`](`https://github.com/qbic-pipelines/rts-prediction-package/`))
+3. Export output images in OME-TIFF format ([`OMEOUT`])
+4. Calculate statistics and write pipeline report ([`RTSSTAT`])
 
 ## Quick Start
 
