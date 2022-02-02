@@ -74,7 +74,7 @@ This pipeline was created using [nf-core tools](https://nf-co.re/) and aims to a
     nextflow run . -profile test_local_ome,docker
     ```
 
-    > * To test with a remote dataset in `.czi` format, stored at [https://zenodo.org/record/5949352](https://zenodo.org/record/5949352):
+    > * To test with a remote dataset in `.czi` format (stored at [https://zenodo.org/record/5949352](https://zenodo.org/record/5949352)):
 
     ```console
     nextflow run . -profile test_remote,docker
