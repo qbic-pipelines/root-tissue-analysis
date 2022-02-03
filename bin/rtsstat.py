@@ -12,9 +12,9 @@ from rich import print, traceback
 
 @click.command()
 @click.option('-m', '--meta', required=True, type=str, help='Path to metadata file')
-@click.option('-r', '--ratios', required=True, type=str, help='Path to metadata file')
-@click.option('-s', '--segs', required=True, type=str, help='Path to metadata file')
-@click.option('-o', '--output', default="./", type=str, help='Path to write the output to')
+@click.option('-r', '--ratios', required=True, type=str, help='Path to ratios')
+@click.option('-s', '--segs', required=True, type=str, help='Path to segmentations')
+@click.option('-o', '--output', default="./", type=str, help='Output path')
 def main(meta: str, ratios: str, segs: str, output: str):
     """Command-line interface for rtsstat"""
 
