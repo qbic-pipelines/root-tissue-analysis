@@ -76,32 +76,35 @@ workflow RTS {
     ch_software_versions = Channel.empty()
 
     //
-    // SUBWORKFLOW: Read in samplesheet, validate and stage input files
+    // SUBWORKFLOW:
     //
     INPUT_CHECK (
         ch_input
     )
 
     //
-    // MODULE: Run RootSeg
+    // MODULE:
     //
     RATIOCONV (
         INPUT_CHECK.out.reads
     )
+
     ROOTSEG (
         RATIOCONV.out.brightfields
-    )
-    RTSSTAT(
-        INPUT_CHECK.out.reads,
-        RATIOCONV.out.ratios,
-        RATIOCONV.out.brightfields,
-        ROOTSEG.out.predictions
     )
 
     OMEOUT(
         RATIOCONV.out.brightfields,
         RATIOCONV.out.ratios,
         ROOTSEG.out.predictions
+    )
+
+    RTSSTAT(
+        INPUT_CHECK.out.reads,
+        RATIOCONV.out.ratios,
+        RATIOCONV.out.brightfields,
+        ROOTSEG.out.predictions,
+        OMEOUT.out.omeout
     )
 
     
