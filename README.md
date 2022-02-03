@@ -44,6 +44,7 @@ This pipeline was created using [nf-core tools](https://nf-co.re/) and aims to a
 #### Output
 
 * Brightfield and ratiomeric images with segmentation masks. Both in `.tiff` and `.npy` formats, and integrated as channels within OME-TIFF image files (`.ome.tif` format)
+* Average ratio table in `.tsv` format
 * Pipeline report in HTML format
 
 
