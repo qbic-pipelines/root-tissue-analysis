@@ -1,0 +1,39 @@
+name: RatioConv
+description: Aggregate results from bioinformatics analyses across many samples into a single report
+keywords:
+    - QC
+    - bioinformatics tools
+    - Beautiful stand-alone HTML report
+tools:
+    - ratioconv:
+        description: |
+            RatioConv searches a given directory for analysis logs and compiles a HTML report.
+            It's a general use tool, perfect for summarising the output from numerous bioinformatics tools.
+        homepage: https://ratioconv.info/
+        documentation: https://ratioconv.info/docs/
+input:
+    - ratioconv_files:
+        type: file
+        description: |
+            List of reports / files recognised by RatioConv, for example the html and zip output of RootSeg
+output:
+    - report:
+        type: file
+        description: RatioConv report file
+        pattern: "ratioconv_report.html"
+    - data:
+        type: dir
+        description: RatioConv data dir
+        pattern: "ratioconv_data"
+    - plots:
+        type: file
+        description: Plots created by RatioConv
+        pattern: "*_data"
+    - version:
+        type: file
+        description: File containing software version
+        pattern: "*.{version.txt}"
+authors:
+    - "@abhi18av"
+    - "@bunop"
+    - "@drpatelh"

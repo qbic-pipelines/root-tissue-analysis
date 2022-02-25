@@ -1,0 +1,28 @@
+name: Docker push for rootseg container (dev)
+# This builds the docker image and pushes to DockerHub
+
+on:
+  push:
+    branches:
+      - dev
+
+jobs:
+  push_dockerhub:
+    name: Push new docker image to DockerHub (dev)
+    runs-on: ubuntu-latest
+    # Only run for the nf-core repo, for releases and merged PRs
+    if: ${{ github.repository == 'qbic-pipelines/root-tissue-analysis' }}
+    env:
+      DOCKERHUB_USERNAME: ${{ secrets.DOCKERHUB_USERNAME }}
+      DOCKERHUB_PASS: ${{ secrets.DOCKERHUB_PASS }}
+    steps:
+      - name: Check out pipeline code
+        uses: actions/checkout@v2
+
+      - name: Build new docker image
+        run: docker build --no-cache ./modules/containers/rootseg/ -t qbicpipelines/rtarootseg:dev
+
+      - name: Push docker image to DockerHub (dev)
+        run: |
+          echo "$DOCKERHUB_PASS" | docker login -u "$DOCKERHUB_USERNAME" --password-stdin
+          docker push qbicpipelines/rtarootseg:dev
