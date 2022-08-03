@@ -57,10 +57,14 @@ ratioconv_options.args += params.ratioconv_title ? Utils.joinModuleArgs(["--titl
 //
 // MODULE: Installed directly from nf-core/modules
 //
-include { ROOTSEG  } from '../modules/local/rootseg/main'  addParams( options: modules['rootseg'] )
+include { ROOTSEG_PRED  } from '../modules/local/rootseg/main'  addParams( options: modules['rootseg'] )
+include { ROOTSEG_UNCERT  } from '../modules/local/rootseg/main'  addParams( options: modules['rootseg'] )
+include { ROOTSEG_GGCAM  } from '../modules/local/rootseg/main'  addParams( options: modules['rootseg'] )
 include { RTSSTAT  } from '../modules/local/rtsstat/main'  addParams( options: modules['rtsstat'] )
 include { RATIOCONV } from '../modules/local/ratioconv/main' addParams( options: ratioconv_options   )
 include { OMEOUT } from '../modules/local/omeout/main' addParams( options: modules['omeout']   )
+include { OMEOUT_UNCERT } from '../modules/local/omeout/main' addParams( options: modules['omeout']   )
+include { OMEOUT_GGCAM } from '../modules/local/omeout/main' addParams( options: modules['omeout']   )
 
 /*
 ========================================================================================
@@ -89,26 +93,44 @@ workflow RTS {
         INPUT_CHECK.out.reads
     )
 
-    ROOTSEG (
+    ROOTSEG_PRED (
         RATIOCONV.out.brightfields
     )
 
-    OMEOUT(
+    ROOTSEG_UNCERT (
+        RATIOCONV.out.brightfields
+    )
+
+    ROOTSEG_GGCAM (
+        RATIOCONV.out.brightfields
+    )
+
+    OMEOUT (
         RATIOCONV.out.brightfields,
         RATIOCONV.out.ratios,
-        ROOTSEG.out.predictions
+        ROOTSEG_PRED.out.pred
+    )
+
+    OMEOUT_UNCERT(
+        RATIOCONV.out.brightfields,
+        ROOTSEG_UNCERT.out.pred_uncert
+    )
+
+    OMEOUT_GGCAM(
+        RATIOCONV.out.brightfields,
+        ROOTSEG_GGCAM.out.pred_ggcam
     )
 
     RTSSTAT(
         INPUT_CHECK.out.reads,
         RATIOCONV.out.ratios,
         RATIOCONV.out.brightfields,
-        ROOTSEG.out.predictions,
+        ROOTSEG_PRED.out.pred,
         OMEOUT.out.omeout
     )
 
     
-    //ch_software_versions = ch_software_versions.mix(ROOTSEG.out.version.first().ifEmpty(null))
+    //ch_software_versions = ch_software_versions.mix(ROOTSEG_PRED.out.version.first().ifEmpty(null))
 
     //
     // MODULE: Pipeline reporting
@@ -136,7 +158,7 @@ workflow RTS {
     ch_ratioconv_files = ch_ratioconv_files.mix(ch_ratioconv_custom_config.collect().ifEmpty([]))
     ch_ratioconv_files = ch_ratioconv_files.mix(ch_workflow_summary.collectFile(name: 'workflow_summary_mqc.yaml'))
     ch_ratioconv_files = ch_ratioconv_files.mix(GET_SOFTWARE_VERSIONS.out.yaml.collect())
-    //ch_ratioconv_files = ch_ratioconv_files.mix(ROOTSEG.out.zip.collect{it[1]}.ifEmpty([]))
+    //ch_ratioconv_files = ch_ratioconv_files.mix(ROOTSEG_PRED.out.zip.collect{it[1]}.ifEmpty([]))
 
     // RATIOCONV (
     //    ch_ratioconv_files.collect()

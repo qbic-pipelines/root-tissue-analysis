@@ -12,10 +12,9 @@ from rich import print, traceback
 
 @click.command()
 @click.option('-i', '--imgs', required=True, type=str, help='Path to image files')
-@click.option('-r', '--ratios', required=True, type=str, help='Path to ratiomeric image files')
-@click.option('-s', '--segs', required=True, type=str, help='Path to segmentation masks')
-@click.option('-o', '--output', default="./", type=str, help='Output path')
-def main(imgs: str, ratios: str, segs: str, output: str):
+@click.option('-g', '--ggcam', required=True, type=str, help='Path to guided grad-CAM feature files')
+@click.option('-o', '--output', default="./", type=str, help='Ouput path')
+def main(imgs: str, ggcam: str, output: str):
     """Command-line interface for ome_output"""
 
     print(r"""[bold blue]
@@ -34,20 +33,20 @@ def main(imgs: str, ratios: str, segs: str, output: str):
 
         brightfield_img = tiff.imread(img_path)
         brightfield_img = brightfield_img[0, :, :] # we need only the first channel
-        
-        ratio_img = tiff.imread(os.path.join(ratios, img_name_base + "_ratio.tif"))
-        ratio_img = np.nan_to_num(ratio_img)
-        
-        mask_img = np.load(os.path.join(segs, img_name_base + ".npy"))
 
-        full_image = np.zeros((512, 512, 3))
+        full_image = np.zeros((512, 512, 6))
         full_image[:, :, 0] = brightfield_img
-        full_image[:, :, 1] = ratio_img
-        full_image[:, :, 2] = mask_img
+
+        # iterate over five classes (bg, root tissue, MZ, EEZ, LEZ)
+        for class_i in range(5):
+            ggcam_i = np.load(os.path.join(ggcam, img_name_base + "_ggcam_t_" + str(class_i) + ".npy"))
+
+            full_image[:, :, class_i +1] = ggcam_i
+
         full_image = np.transpose(full_image, (2, 0, 1))
 
-        with tiff.TiffWriter(os.path.join(output, img_name_base + ".ome.tif")) as tif_file:
-            tif_file.write(full_image, photometric='minisblack', metadata={'axes': 'CYX', 'Channel': {'Name': ["image", "ratiomeric", "mask"]}})
+        with tiff.TiffWriter(os.path.join(output, img_name_base + "_ggcam.ome.tif")) as tif_file:
+            tif_file.write(full_image, photometric='minisblack', metadata={'axes': 'CYX', 'Channel': {'Name': ["image", "ggcam-bg", "ggcam-tissue", "ggcam-eez", "ggcam-lez", "ggcam-mz"]}})
 
 if __name__ == "__main__":
     traceback.install()
