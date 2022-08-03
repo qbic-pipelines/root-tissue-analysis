@@ -27,8 +27,8 @@ process ROOTSEG {
     def software = getSoftwareName(task.process)
     //def prefix   = options.suffix ? "${meta.id}${options.suffix}" : "${meta.id}"
     """
-    wget https://zenodo.org/record/5181261/files/model.ckpt
-    rts_package -i $brightfields -o predictions -m model.ckpt --suffix ""
+    wget https://zenodo.org/record/6937290/files/mark1-PHDFM-u2net-model.ckpt
+    rts-pred -i $brightfields -o predictions -m mark1-PHDFM-u2net-model.ckpt --suffix ""
     """
 
 }
