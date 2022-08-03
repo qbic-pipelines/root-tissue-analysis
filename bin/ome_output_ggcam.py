@@ -13,7 +13,7 @@ from rich import print, traceback
 @click.command()
 @click.option('-i', '--imgs', required=True, type=str, help='Path to image files')
 @click.option('-g', '--ggcam', required=True, type=str, help='Path to guided grad-CAM feature files')
-@click.option('-o', '--output', default="./", type=str, help='Ouput path')
+@click.option('-o', '--output', default="./", type=str, help='Output path')
 def main(imgs: str, ggcam: str, output: str):
     """Command-line interface for ome_output"""
 
