@@ -18,6 +18,8 @@ process RTSSTAT {
     path(brightfield)
     path(predictions)
     path(omeout)
+    path(omeout_uncert)
+    path(omeout_ggcam)
 
     output:
 
@@ -34,7 +36,7 @@ process RTSSTAT {
     """
     rtsstat.py --meta "$metadata/metadata.csv" --ratios "$ratios/" --segs "$predictions/"
     cp /reporting.ipynb ./report_wo_par.ipynb
-    papermill -p ratio_img_path $ratios/ -p pred_path $predictions/ -p img_path $brightfield/ -p ome_output_path $omeout/ report_wo_par.ipynb reporting.ipynb
+    papermill -p ratio_img_path $ratios/ -p pred_path $predictions/ -p img_path $brightfield/ -p ome_output_path $omeout/ -p ome_output_uncert_path $omeout_uncert/ -p ome_output_ggcam_path $omeout_ggcam/ report_wo_par.ipynb reporting.ipynb
     jupyter nbconvert --to html --execute reporting.ipynb --no-input
     """
 

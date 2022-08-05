@@ -126,7 +126,9 @@ workflow RTS {
         RATIOCONV.out.ratios,
         RATIOCONV.out.brightfields,
         ROOTSEG_PRED.out.pred,
-        OMEOUT.out.omeout
+        OMEOUT.out.omeout,
+        OMEOUT_UNCERT.out.omeout,
+        OMEOUT_GGCAM.out.omeout
     )
 
     
