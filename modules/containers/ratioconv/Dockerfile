@@ -5,6 +5,7 @@ RUN apt update
 RUN apt install -y xvfb
 
 RUN apt install libxrender1
+RUN apt install libxtst6
 
 USER fiji
 RUN ImageJ-linux64 --headless --update add-update-site ImageScience http://sites.imagej.net/ImageScience/
