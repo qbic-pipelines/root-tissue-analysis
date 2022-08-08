@@ -23,7 +23,7 @@ process RATIOCONV {
     script:
     def software = getSoftwareName(task.process)
     """
-    cp /home/root/ratio_macro.ijm ./
+    cp /home/ratio_macro.ijm ./
     mkdir output
     xvfb-run -a fiji-linux64 --run ratio_macro.ijm 'inDir="$input/",outDir="output/"'
     mkdir ratios
