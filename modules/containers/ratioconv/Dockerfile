@@ -5,8 +5,8 @@ RUN apt update
 RUN apt install -y xvfb
 
 USER fiji
-RUN fiji-linux64 --headless --update add-update-site ImageScience http://sites.imagej.net/ImageScience/
-RUN fiji-linux64 --headless --update update jars/imagescience.jar
-RUN fiji-linux64 --headless --update update plugins/FeatureJ_.jar
+RUN ImageJ-linux64 --headless --update add-update-site ImageScience http://sites.imagej.net/ImageScience/
+RUN ImageJ-linux64 --headless --update update jars/imagescience.jar
+RUN ImageJ-linux64 --headless --update update plugins/FeatureJ_.jar
 
 COPY ratio_macro.ijm ./
