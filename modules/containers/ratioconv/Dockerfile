@@ -1,4 +1,4 @@
-FROM  fiji/fiji:fiji-openjdk-7
+FROM  fiji/fiji:fiji-openjdk-11
 USER root
 RUN apt update
 RUN apt install -y xvfb
