@@ -7,6 +7,5 @@ RUN fiji-linux64 --headless --update add-update-site ImageScience https://sites.
 RUN fiji-linux64 --headless --update update jars/imagescience.jar
 RUN fiji-linux64 --headless --update update plugins/FeatureJ_.jar
 
-USER fiji
-ENV HOME /home/fiji
+ENV HOME /home/root
 COPY ratio_macro.ijm ./
