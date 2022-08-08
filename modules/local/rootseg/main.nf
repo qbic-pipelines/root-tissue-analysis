@@ -57,7 +57,7 @@ process ROOTSEG_UNCERT {
     //def prefix   = options.suffix ? "${meta.id}${options.suffix}" : "${meta.id}"
     """
     wget https://zenodo.org/record/6937290/files/mark1-PHDFM-u2net-model.ckpt
-    rts-pred-uncert -i $brightfields -o pred_uncert -m mark1-PHDFM-u2net-model.ckpt --suffix ""  -t 2
+    rts-pred-uncert -i $brightfields -o pred_uncert -m mark1-PHDFM-u2net-model.ckpt --suffix ""  -t 10
     """
 
 }
