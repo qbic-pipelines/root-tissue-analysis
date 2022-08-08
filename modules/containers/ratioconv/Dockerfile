@@ -1,4 +1,4 @@
-FROM  fiji/fiji:fiji-openjdk-11
+FROM  fiji/fiji:fiji-openjdk-6
 
 USER root
 RUN apt update
