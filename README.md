@@ -25,11 +25,11 @@
 **qbic-pipelines/root-tissue-analysis** is a bioinformatics best-practice pipeline to analyze pH measurements from root tissue samples of *A. thaliana.*, these measurments are derived from fluorescence microscopy images. This pipeline aims to analyze pH measurments to validate the acid-growth hypothesis, which explains the expansion of cells in root tissue. This acid-growth pathway model needs substantial pH measurement data for validation, however this type of data generation is time consuming, since manual annotation of ROIs is a mayor bottle-neck. To mitigate this issue, the pipeline provides automatic, multi-class tissue segmentation (5 clases) using U-Net models, previously trained on a dataset generated and annotated by experienced plant biologists (https://github.com/qbic-pipelines/root-tissue-segmentation-core/).
 
 <p align="center">
-    <img src="docs/images/bio_background.png" alt="qbic-pipelines/root-tissue-analysis biological background" width="70%">
+    <img src="docs/images/bio_background.png" alt="qbic-pipelines/root-tissue-analysis biological background" width="50%">
 </p>
 
 <p align="center">
-    <img src="docs/images/bio_background.png" alt="qbic-pipelines/root-tissue-analysis biological background" width="70%">
+    <img src="docs/images/dataset.png" alt="qbic-pipelines/root-tissue-analysis dataset" width="70%">
 </p>
 
 This pipeline was created using [nf-core tools](https://nf-co.re/) and aims to adhere to its reproducibility standards. The pipeline is built using [Nextflow](https://www.nextflow.io), a workflow tool to run tasks across multiple compute infrastructures in a very portable manner. It uses Docker/Singularity containers making installation trivial and results highly reproducible.
@@ -50,11 +50,13 @@ This pipeline was created using [nf-core tools](https://nf-co.re/) and aims to a
 
 * Metadata table in `.csv` format, with 3 columns (filename, treatment, breeding line), e.g.:
 
-`Filename,Treatment,Breeding Line
+Filename,Treatment,Breeding Line
 Image 70,Mock,bri1-301
 Image 71,Mock,bri1-301
 Image 114,BL,bri1-301
-Image 115,BL,bri1-301`
+Image 115,BL,bri1-301
+
+Sample input data: ([`testdata.tar.gz`](`https://github.com/qbic-pipelines/root-tissue-analysis/blob/main/assets/testdata.tar.gz`))
 
 #### Output
 
