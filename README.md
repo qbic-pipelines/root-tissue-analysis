@@ -42,7 +42,7 @@ This pipeline was created using [nf-core tools](https://nf-co.re/) and aims to a
 
 #### Input
 
-* Input image files in `.czi` or `.ome.tif` (OME-TIFF) format. Images with 4 channels, in the following order:
+* Fluorescence microscopy image files, in `.czi` or `.ome.tif` (OME-TIFF) file format. Images of 512x512 pixels in size, and acquired with a target pixel size of 0.415133 µm, each with 4 channels in the following order:
 1. Fluorescence signal obtained by excitation at 405 nm
 2. Brightfield image for excitation at 405 nm
 3. Fluorescence signal obtained by excitation at 458 nm
@@ -59,7 +59,7 @@ Image 115,BL,bri1-301
 ```
 
 
-Sample input data: [`Testdata`](https://github.com/qbic-pipelines/root-tissue-analysis/blob/dev/assets/testdata.tar.gz)
+Sample input data: [`Testdata`](https://github.com/qbic-pipelines/root-tissue-analysis/blob/main/assets/testdata.tar.gz)
 
 #### Output
 
