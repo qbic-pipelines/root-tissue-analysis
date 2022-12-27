@@ -50,11 +50,14 @@ This pipeline was created using [nf-core tools](https://nf-co.re/) and aims to a
 
 * Metadata table in `.csv` format, with 3 columns (filename, treatment, breeding line), e.g.:
 
+```console
 Filename,Treatment,Breeding Line
 Image 70,Mock,bri1-301
 Image 71,Mock,bri1-301
 Image 114,BL,bri1-301
 Image 115,BL,bri1-301
+```
+
 
 Sample input data: ([`testdata.tar.gz`](`https://github.com/qbic-pipelines/root-tissue-analysis/blob/main/assets/testdata.tar.gz`))
 
