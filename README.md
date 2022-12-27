@@ -59,7 +59,7 @@ Image 115,BL,bri1-301
 ```
 
 
-Sample input data: [`testdata`](`https://github.com/qbic-pipelines/root-tissue-analysis/blob/dev/assets/testdata.tar.gz`)
+Sample input data: [`Testdata`](https://github.com/qbic-pipelines/root-tissue-analysis/blob/dev/assets/testdata.tar.gz)
 
 #### Output
 
@@ -71,7 +71,7 @@ Sample input data: [`testdata`](`https://github.com/qbic-pipelines/root-tissue-a
 #### Steps
 
 1. Fiji macro for ratimeric image conversion ([`RATIOCONV`])
-2. Root tissue segmentation. ([`ROOTSEG`](`https://github.com/qbic-pipelines/rts-prediction-package/`))
+2. Root tissue segmentation. ([`ROOTSEG`](https://github.com/qbic-pipelines/rts-prediction-package/))
 3. Export output images in OME-TIFF format ([`OMEOUT`])
 4. Calculate statistics and write pipeline report ([`RTSSTAT`])
 
