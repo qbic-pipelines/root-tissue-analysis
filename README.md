@@ -35,7 +35,7 @@
 This pipeline was created using [nf-core tools](https://nf-co.re/) and aims to adhere to its reproducibility standards. The pipeline is built using [Nextflow](https://www.nextflow.io), a workflow tool to run tasks across multiple compute infrastructures in a very portable manner. It uses Docker/Singularity containers making installation trivial and results highly reproducible.
 
 <p align="center">
-    <img src="docs/images/rta-activity-diagrams.png" alt="qbic-pipelines/root-tissue-analysis activity diagram" width="100%">
+    <img src="docs/images/rta-activity-diagram.png" alt="qbic-pipelines/root-tissue-analysis activity diagram" width="100%">
 </p>
 
 ## Pipeline summary
