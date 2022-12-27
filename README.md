@@ -59,7 +59,7 @@ Image 115,BL,bri1-301
 ```
 
 
-Sample input data: ([`testdata.tar.gz`](`https://github.com/qbic-pipelines/root-tissue-analysis/blob/main/assets/testdata.tar.gz`))
+Sample input data: ([`testdata`](`https://github.com/qbic-pipelines/root-tissue-analysis/blob/main/assets/testdata.tar.gz`))
 
 #### Output
 
