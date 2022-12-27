@@ -42,8 +42,19 @@ This pipeline was created using [nf-core tools](https://nf-co.re/) and aims to a
 
 #### Input
 
-* Input images with 4 channels (), in `.czi` or `.ome.tif` (OME-TIFF) format
-* Metadata table in `.csv` format, with 3 columns (filename, treatment, breeding line)
+* Input image files in `.czi` or `.ome.tif` (OME-TIFF) format. Images with 4 channels, in the following order:
+1. Fluorescence signal obtained by excitation at 405 nm
+2. Brightfield image for excitation at 405 nm
+3. Fluorescence signal obtained by excitation at 458 nm
+4. Brightfield image for excitation at 458 nm 
+
+* Metadata table in `.csv` format, with 3 columns (filename, treatment, breeding line), e.g.:
+
+`Filename,Treatment,Breeding Line
+Image 70,Mock,bri1-301
+Image 71,Mock,bri1-301
+Image 114,BL,bri1-301
+Image 115,BL,bri1-301`
 
 #### Output
 
