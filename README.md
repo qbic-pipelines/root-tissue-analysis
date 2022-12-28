@@ -64,6 +64,7 @@ Sample input data: [`Testdata`](https://github.com/qbic-pipelines/root-tissue-an
 #### Output
 
 * Brightfield and ratiomeric images with segmentation masks. Both in `.tiff` and `.npy` formats, and integrated as channels within OME-TIFF image files (`.ome.tif` format)
+* Uncertainty and interpretability maps in `.ome.tif` format
 * Average ratio table in `.tsv` format
 * Pipeline report in HTML format
 
@@ -74,7 +75,7 @@ Sample input data: [`Testdata`](https://github.com/qbic-pipelines/root-tissue-an
 
     * `RATIOCONV` container: https://hub.docker.com/r/qbicpipelines/rtaratioconv
 
-2. Root tissue segmentation. ([`ROOTSEG`]). This prediction module implements the Monte Carlo Dropout procedure (https://arxiv.org/abs/1506.02142) to calculate prediction uncertainty (uncertainty maps). The number of Monte Carlo samples is set by default to `T=10`. Additionally, this module uses the Guided Grad-CAM algorithm (https://arxiv.org/abs/1610.02391) to compute input feature importance visualizations (interpretability maps), as implemented by the Captum library (https://captum.ai/).
+2. Root tissue segmentation. ([`ROOTSEG`]). This prediction module implements the Monte Carlo Dropout procedure (https://arxiv.org/abs/1506.02142) to calculate prediction uncertainty (uncertainty maps). The number of Monte Carlo samples is set by default to `T=10`. Additionally, this module uses the Guided Grad-CAM algorithm (https://arxiv.org/abs/1610.02391) to compute visualizations of input feature importance (interpretability maps), as implemented by the Captum library (https://captum.ai/).
 
     * Segmentation prediction module (mlf-core): https://github.com/qbic-pipelines/rts-prediction-package/
     * `ROOTSEG` container: https://hub.docker.com/r/qbicpipelines/rtarootseg
