@@ -14,8 +14,9 @@
 
     > Heumos, L., Ehmele, P., Cuellar, L. K., Menden, K., Miller, E., Lemke, S., Gabernet, G., & Nahnsen, S. (2021). mlf-core: a framework for deterministic machine learning. In arXiv [cs.MS]. arXiv. http://arxiv.org/abs/2104.07651
 
-    >**Training module:** https://github.com/qbic-pipelines/root-tissue-segmentation-core
-    >**Training prediction:** https://github.com/qbic-pipelines/rts-prediction-package
+    * **Training module:** https://github.com/qbic-pipelines/root-tissue-segmentation-core
+    
+    * **Training prediction:** https://github.com/qbic-pipelines/rts-prediction-package
 
 * [RatioConv](https://pubmed.ncbi.nlm.nih.gov/28559333/)
     > Barbez, E., Dünser, K., Gaidora, A., Lendl, T., & Busch, W. (2017). Auxin steers root cell expansion via apoplastic pH regulation in Arabidopsis thaliana. Proceedings of the National Academy of Sciences of the United States of America, 114(24), E4884–E4893.
