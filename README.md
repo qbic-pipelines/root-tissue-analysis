@@ -131,16 +131,11 @@ If you would like to contribute to this pipeline, please see the [contributing g
 
 ## Citations
 
-<!-- TODO nf-core: Add citation for pipeline after first release. Uncomment lines below and update Zenodo doi and badge at the top of this file. -->
-<!-- If you use  nf-core/rts for your analysis, please cite it using the following doi: [10.5281/zenodo.XXXXXX](https://doi.org/10.5281/zenodo.XXXXXX) -->
-
 <!-- TODO nf-core: Add bibliography of tools and data used in your pipeline -->
 An extensive list of references for the tools used by the pipeline can be found in the [`CITATIONS.md`](CITATIONS.md) file.
 
-You can cite the `nf-core` publication as follows:
+> Ewels PA, Peltzer A, Fillinger S, Patel H, Alneberg J, Wilm A, Garcia MU, Di Tommaso P, Nahnsen S. **The nf-core framework for community-curated bioinformatics pipelines.** Nat Biotechnol. 2020 Mar;38(3):276-278. doi: [10.1038/s41587-020-0439-x](https://dx.doi.org/10.1038/s41587-020-0439-x). PubMed PMID: 32055031.
 
-> **The nf-core framework for community-curated bioinformatics pipelines.**
->
-> Philip Ewels, Alexander Peltzer, Sven Fillinger, Harshil Patel, Johannes Alneberg, Andreas Wilm, Maxime Ulysse Garcia, Paolo Di Tommaso & Sven Nahnsen.
->
-> _Nat Biotechnol._ 2020 Feb 13. doi: [10.1038/s41587-020-0439-x](https://dx.doi.org/10.1038/s41587-020-0439-x).
+> Heumos, L., Ehmele, P., Cuellar, L. K., Menden, K., Miller, E., Lemke, S., Gabernet, G., & Nahnsen, S. (2021). **mlf-core: a framework for deterministic machine learning.** In arXiv [cs.MS]. arXiv. http://arxiv.org/abs/2104.07651
+
+> Barbez, E., Dünser, K., Gaidora, A., Lendl, T., & Busch, W. (2017). **Auxin steers root cell expansion via apoplastic pH regulation in Arabidopsis thaliana.** Proceedings of the National Academy of Sciences of the United States of America, 114(24), E4884–E4893.

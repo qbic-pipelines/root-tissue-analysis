@@ -10,10 +10,15 @@
 
 ## Pipeline tools
 
-* [RootSeg](https://www.bioinformatics.babraham.ac.uk/projects/rootseg/)
+* [RootSeg](https://github.com/qbic-pipelines/rts-prediction-package)
 
-* [RatioConv](https://www.ncbi.nlm.nih.gov/pubmed/27312411/)
-    > Ewels P, Magnusson M, Lundin S, Käller M. RatioConv: summarize analysis results for multiple tools and samples in a single report. Bioinformatics. 2016 Oct 1;32(19):3047-8. doi: 10.1093/bioinformatics/btw354. Epub 2016 Jun 16. PubMed PMID: 27312411; PubMed Central PMCID: PMC5039924.
+    > Heumos, L., Ehmele, P., Cuellar, L. K., Menden, K., Miller, E., Lemke, S., Gabernet, G., & Nahnsen, S. (2021). mlf-core: a framework for deterministic machine learning. In arXiv [cs.MS]. arXiv. http://arxiv.org/abs/2104.07651
+
+    >**Training module:** https://github.com/qbic-pipelines/root-tissue-segmentation-core
+    >**Training prediction:** https://github.com/qbic-pipelines/rts-prediction-package
+
+* [RatioConv](https://pubmed.ncbi.nlm.nih.gov/28559333/)
+    > Barbez, E., Dünser, K., Gaidora, A., Lendl, T., & Busch, W. (2017). Auxin steers root cell expansion via apoplastic pH regulation in Arabidopsis thaliana. Proceedings of the National Academy of Sciences of the United States of America, 114(24), E4884–E4893.
 
 ## Software packaging/containerisation tools
 
@@ -27,6 +32,8 @@
     > da Veiga Leprevost F, Grüning B, Aflitos SA, Röst HL, Uszkoreit J, Barsnes H, Vaudel M, Moreno P, Gatto L, Weber J, Bai M, Jimenez RC, Sachsenberg T, Pfeuffer J, Alvarez RV, Griss J, Nesvizhskii AI, Perez-Riverol Y. BioContainers: an open-source and community-driven framework for software standardization. Bioinformatics. 2017 Aug 15;33(16):2580-2582. doi: 10.1093/bioinformatics/btx192. PubMed PMID: 28379341; PubMed Central PMCID: PMC5870671.
 
 * [Docker](https://dl.acm.org/doi/10.5555/2600239.2600241)
+
+    > Dirk Merkel. 2014. Docker: lightweight Linux containers for consistent development and deployment. Linux J. 2014, 239, Article 2 (March 2014).
 
 * [Singularity](https://pubmed.ncbi.nlm.nih.gov/28494014/)
     > Kurtzer GM, Sochat V, Bauer MW. Singularity: Scientific containers for mobility of compute. PLoS One. 2017 May 11;12(5):e0177459. doi: 10.1371/journal.pone.0177459. eCollection 2017. PubMed PMID: 28494014; PubMed Central PMCID: PMC5426675.
