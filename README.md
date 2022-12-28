@@ -71,9 +71,16 @@ Sample input data: [`Testdata`](https://github.com/qbic-pipelines/root-tissue-an
 #### Steps
 
 1. Fiji macro for ratimeric image conversion ([`RATIOCONV`])
-2. Root tissue segmentation. ([`ROOTSEG`](https://github.com/qbic-pipelines/rts-prediction-package/))
+    * RATIOCONV container: https://hub.docker.com/r/qbicpipelines/rtaratioconv
+
+2. Root tissue segmentation. ([`ROOTSEG`])
+    * Segmentation prediction module: https://github.com/qbic-pipelines/rts-prediction-package/
+    * ROOTSEG container: https://hub.docker.com/r/qbicpipelines/rtarootseg
+
 3. Export output images in OME-TIFF format ([`OMEOUT`])
+
 4. Calculate statistics and write pipeline report ([`RTSSTAT`])
+    * RTSSTAT container: https://hub.docker.com/r/qbicpipelines/rtastat
 
 ## Quick Start
 
@@ -123,7 +130,7 @@ The qbic-pipelines/root-tissue-analysis pipeline comes with documentation about 
 
 ## Credits
 
-qbic-pipelines/root-tissue-analysis was originally written by Julian Wanner.
+qbic-pipelines/root-tissue-analysis was originally written by Julian Wanner and Luis Kuhn Cuellar.
 
 ## Contributions and Support
 
