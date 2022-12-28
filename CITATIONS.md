@@ -16,7 +16,7 @@
 
     * **Training module:** https://github.com/qbic-pipelines/root-tissue-segmentation-core
     
-    * **Training prediction:** https://github.com/qbic-pipelines/rts-prediction-package
+    * **Prediction module:** https://github.com/qbic-pipelines/rts-prediction-package
 
 * [RatioConv](https://pubmed.ncbi.nlm.nih.gov/28559333/)
     > Barbez, E., Dünser, K., Gaidora, A., Lendl, T., & Busch, W. (2017). Auxin steers root cell expansion via apoplastic pH regulation in Arabidopsis thaliana. Proceedings of the National Academy of Sciences of the United States of America, 114(24), E4884–E4893.
