@@ -71,15 +71,18 @@ Sample input data: [`Testdata`](https://github.com/qbic-pipelines/root-tissue-an
 #### Steps
 
 1. Fiji macro for ratimeric image conversion ([`RATIOCONV`])
+
     * `RATIOCONV` container: https://hub.docker.com/r/qbicpipelines/rtaratioconv
 
-2. Root tissue segmentation. ([`ROOTSEG`])
+2. Root tissue segmentation. ([`ROOTSEG`]). This prediction module implements the Monte Carlo Dropout procedure (https://arxiv.org/abs/1506.02142) to calculate prediction uncertainty (uncertainty maps). The number of Monte Carlo samples is set by default to `T=10`. Additionally, this module uses the Guided Grad-CAM algorithm (https://arxiv.org/abs/1610.02391) to compute input feature importance visualizations (interpretability maps), as implemented by the Captum library (https://captum.ai/).
+
     * Segmentation prediction module (mlf-core): https://github.com/qbic-pipelines/rts-prediction-package/
     * `ROOTSEG` container: https://hub.docker.com/r/qbicpipelines/rtarootseg
 
 3. Export output images in OME-TIFF format ([`OMEOUT`])
 
 4. Calculate statistics and write pipeline report ([`RTSSTAT`])
+
     * `RTSSTAT` container: https://hub.docker.com/r/qbicpipelines/rtastat
 
 ## Quick Start
