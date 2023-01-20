@@ -17,7 +17,7 @@
                         "size": "Large",
                         "weight": "Bolder",
                         "color": "<% if (success) { %>Good<% } else { %>Attention<%} %>",
-                        "text": "nf-core/rts v${version} - ${runName}",
+                        "text": "qbic-pipelines/root-tissue-analysis v${version} - ${runName}",
                         "wrap": true
                     },
                     {

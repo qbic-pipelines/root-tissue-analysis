@@ -12,7 +12,6 @@ $email_html
 Content-Type: image/png;name="nf-core-rts_logo.png"
 Content-Transfer-Encoding: base64
 Content-ID: <nfcorepipelinelogo>
-Content-Disposition: inline; filename="nf-core-rts_logo_light.png"
 
 <% out << new File("$projectDir/assets/nf-core-rts_logo_light.png").
     bytes.
