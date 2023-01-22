@@ -10,7 +10,7 @@ process RATIOCONV {
     publishDir "${params.outdir}",
         mode: params.publish_dir_mode,
         saveAs: { filename -> saveFiles(filename:filename, options:params.options, publish_dir:getSoftwareName(task.process), meta:[:], publish_by_meta:[]) }
-    container "qbicpipelines/rtaratioconv:dev"
+    container "fiji/fiji:fiji-openjdk-8"
     containerOptions "--network=none --memory-swap -1 --user root"
 
     input:
