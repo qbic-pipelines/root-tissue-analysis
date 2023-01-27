@@ -10,4 +10,4 @@ RUN ImageJ-linux64 --headless --update add-update-site ImageScience http://sites
 RUN ImageJ-linux64 --headless --update update jars/imagescience.jar
 RUN ImageJ-linux64 --headless --update update plugins/FeatureJ_.jar
 COPY ratio_macro.ijm ./
-ENTRYPOINT ["/entrypoint.sh"]
+ENTRYPOINT []
