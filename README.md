@@ -4,7 +4,7 @@
 
 # ![qbic-pipelines/root-tissue-analysis](docs/images/qbic_logo.png) qbic-pipelines/root-tissue-analysis
 
-**A reproducible analysis pipeline for pH measurements derived from fluorescence microscopy of *A. thaliana.* root tissue**.
+**A reproducible analysis pipeline for pH measurements derived from fluorescence microscopy of _A. thaliana_ root tissue**.
 
 [![GitHub Actions CI Status](https://github.com/nf-core/rts/workflows/nf-core%20CI/badge.svg)](https://github.com/nf-core/rts/actions?query=workflow%3A%22nf-core+CI%22)
 [![GitHub Actions Linting Status](https://github.com/nf-core/rts/workflows/nf-core%20linting/badge.svg)](https://github.com/nf-core/rts/actions?query=workflow%3A%22nf-core+linting%22)
@@ -22,7 +22,7 @@
 
 ## Introduction
 
-**qbic-pipelines/root-tissue-analysis** is a bioinformatics best-practice pipeline to analyze pH measurements from root tissue samples of *A. thaliana.*, these measurments are derived from fluorescence microscopy images. This pipeline aims to analyze pH measurments to validate the acid-growth hypothesis, which explains the expansion of cells in root tissue. This acid-growth pathway model needs substantial pH measurement data for validation, however this type of data generation is time consuming, since manual annotation of ROIs is a mayor bottle-neck. To mitigate this issue, the pipeline provides automatic, multi-class tissue segmentation (5 clases) using U-Net models, previously trained on a dataset generated and annotated by experienced plant biologists (https://github.com/qbic-pipelines/root-tissue-segmentation-core/).
+**qbic-pipelines/root-tissue-analysis** is a bioinformatics best-practice pipeline to analyze pH measurements from root tissue samples of _A. thaliana._, these measurments are derived from fluorescence microscopy images. This pipeline aims to analyze pH measurments to validate the acid-growth hypothesis, which explains the expansion of cells in root tissue. This acid-growth pathway model needs substantial pH measurement data for validation, however this type of data generation is time consuming, since manual annotation of ROIs is a mayor bottle-neck. To mitigate this issue, the pipeline provides automatic, multi-class tissue segmentation (5 clases) using U-Net models, previously trained on a dataset generated and annotated by experienced plant biologists (https://github.com/qbic-pipelines/root-tissue-segmentation-core/).
 
 <p align="center">
     <img src="docs/images/bio_background.png" alt="qbic-pipelines/root-tissue-analysis biological background" width="50%">
@@ -42,13 +42,14 @@ This pipeline was created using [nf-core tools](https://nf-co.re/) and aims to a
 
 #### Input
 
-* Fluorescence microscopy image files, in `.czi` or `.ome.tif` (OME-TIFF) file format. Images of 512x512 pixels in size, and acquired with a target pixel size of 0.415133 µm, each with 4 channels in the following order:
+- Fluorescence microscopy image files, in `.czi` or `.ome.tif` (OME-TIFF) file format. Images of 512x512 pixels in size, and acquired with a target pixel size of 0.415133 µm, each with 4 channels in the following order:
+
 1. Fluorescence signal obtained by excitation at 405 nm
 2. Brightfield image for excitation at 405 nm
 3. Fluorescence signal obtained by excitation at 458 nm
-4. Brightfield image for excitation at 458 nm 
+4. Brightfield image for excitation at 458 nm
 
-* Metadata table in `.csv` format, with 3 columns (filename, treatment, breeding line), e.g.:
+- Metadata table in `.csv` format, with 3 columns (filename, treatment, breeding line), e.g.:
 
 ```console
 Filename,Treatment,Breeding Line
@@ -58,33 +59,31 @@ Image 114,BL,bri1-301
 Image 115,BL,bri1-301
 ```
 
-
 Sample input data: [`Testdata`](https://github.com/qbic-pipelines/root-tissue-analysis/blob/main/assets/testdata.tar.gz)
 
 #### Output
 
-* Brightfield and ratiomeric images with segmentation masks. Both in `.tiff` and `.npy` formats, and integrated as channels within OME-TIFF image files (`.ome.tif` format)
-* Uncertainty and interpretability maps in `.ome.tif` format
-* Average ratio table in `.tsv` format
-* Pipeline report in HTML format
-
+- Brightfield and ratiomeric images with segmentation masks. Both in `.tiff` and `.npy` formats, and integrated as channels within OME-TIFF image files (`.ome.tif` format)
+- Uncertainty and interpretability maps in `.ome.tif` format
+- Average ratio table in `.tsv` format
+- Pipeline report in HTML format
 
 #### Steps
 
 1. Fiji macro for ratimeric image conversion ([`RATIOCONV`])
 
-    * `RATIOCONV` container: https://hub.docker.com/r/qbicpipelines/rtaratioconv
+   - `RATIOCONV` container: https://hub.docker.com/r/qbicpipelines/rtaratioconv
 
 2. Root tissue segmentation. ([`ROOTSEG`]). This prediction module implements the Monte Carlo Dropout procedure (https://arxiv.org/abs/1506.02142) to calculate prediction uncertainty (uncertainty maps). The number of Monte Carlo samples is set by default to `T=10`. Additionally, this module uses the Guided Grad-CAM algorithm (https://arxiv.org/abs/1610.02391) to compute visualizations of input feature importance (interpretability maps), as implemented by the Captum library (https://captum.ai/).
 
-    * Segmentation prediction module (mlf-core): https://github.com/qbic-pipelines/rts-prediction-package/
-    * `ROOTSEG` container: https://hub.docker.com/r/qbicpipelines/rtarootseg
+   - Segmentation prediction module (mlf-core): https://github.com/qbic-pipelines/rts-prediction-package/
+   - `ROOTSEG` container: https://hub.docker.com/r/qbicpipelines/rtarootseg
 
 3. Export output images in OME-TIFF format ([`OMEOUT`])
 
 4. Calculate statistics and write pipeline report ([`RTSSTAT`])
 
-    * `RTSSTAT` container: https://hub.docker.com/r/qbicpipelines/rtastat
+   - `RTSSTAT` container: https://hub.docker.com/r/qbicpipelines/rtastat
 
 ## Quick Start
 
@@ -94,39 +93,39 @@ Sample input data: [`Testdata`](https://github.com/qbic-pipelines/root-tissue-an
 
 3. Download the pipeline and test with profiles:
 
-    > * To test with a local dataset in `.czi` format, stored in `root-tissue-analysis/assets/testdata.tar.gz`:
+   > - To test with a local dataset in `.czi` format, stored in `root-tissue-analysis/assets/testdata.tar.gz`:
 
-    ```console
-    nextflow run . -profile test_local,docker
-    ```
+   ```console
+   nextflow run . -profile test_local,docker
+   ```
 
-    > * To test with a local dataset in OME-TIFF format (`.ome.tiff`), stored in `root-tissue-analysis/assets/testdata_ome.tar.gz`:
+   > - To test with a local dataset in OME-TIFF format (`.ome.tiff`), stored in `root-tissue-analysis/assets/testdata_ome.tar.gz`:
 
-    ```console
-    nextflow run . -profile test_local_ome,docker
-    ```
+   ```console
+   nextflow run . -profile test_local_ome,docker
+   ```
 
-    > * To test with a remote dataset in `.czi` format (stored at [https://zenodo.org/record/5949352](https://zenodo.org/record/5949352)):
+   > - To test with a remote dataset in `.czi` format (stored at [https://zenodo.org/record/5949352](https://zenodo.org/record/5949352)):
 
-    ```console
-    nextflow run . -profile test_remote,docker
-    ```
+   ```console
+   nextflow run . -profile test_remote,docker
+   ```
 
 4. Download the pipeline and test it on a minimal dataset with a single command:
 
-    ```console
-    nextflow run qbic-pipelines/root-tissue-analysis -profile test,<docker/singularity/podman/shifter/charliecloud/conda/institute>
-    ```
+   ```console
+   nextflow run qbic-pipelines/root-tissue-analysis -profile test,<docker/singularity/podman/shifter/charliecloud/conda/institute>
+   ```
 
-    > * Please check [nf-core/configs](https://github.com/nf-core/configs#documentation) to see if a custom config file to run nf-core pipelines already exists for your Institute. If so, you can simply use `-profile <institute>` in your command. This will enable either `docker` or `singularity` and set the appropriate execution settings for your local compute environment.
-    > * If you are using `singularity` then the pipeline will auto-detect this and attempt to download the Singularity images directly as opposed to performing a conversion from Docker images. If you are persistently observing issues downloading Singularity images directly due to timeout or network issues then please use the `--singularity_pull_docker_container` parameter to pull and convert the Docker image instead. Alternatively, it is highly recommended to use the [`nf-core download`](https://nf-co.re/tools/#downloading-pipelines-for-offline-use) command to pre-download all of the required containers before running the pipeline and to set the [`NXF_SINGULARITY_CACHEDIR` or `singularity.cacheDir`](https://www.nextflow.io/docs/latest/singularity.html?#singularity-docker-hub) Nextflow options to be able to store and re-use the images from a central location for future pipeline runs.
-    > * If you are using `conda`, it is highly recommended to use the [`NXF_CONDA_CACHEDIR` or `conda.cacheDir`](https://www.nextflow.io/docs/latest/conda.html) settings to store the environments in a central location for future pipeline runs.
+   > - Please check [nf-core/configs](https://github.com/nf-core/configs#documentation) to see if a custom config file to run nf-core pipelines already exists for your Institute. If so, you can simply use `-profile <institute>` in your command. This will enable either `docker` or `singularity` and set the appropriate execution settings for your local compute environment.
+   > - If you are using `singularity` then the pipeline will auto-detect this and attempt to download the Singularity images directly as opposed to performing a conversion from Docker images. If you are persistently observing issues downloading Singularity images directly due to timeout or network issues then please use the `--singularity_pull_docker_container` parameter to pull and convert the Docker image instead. Alternatively, it is highly recommended to use the [`nf-core download`](https://nf-co.re/tools/#downloading-pipelines-for-offline-use) command to pre-download all of the required containers before running the pipeline and to set the [`NXF_SINGULARITY_CACHEDIR` or `singularity.cacheDir`](https://www.nextflow.io/docs/latest/singularity.html?#singularity-docker-hub) Nextflow options to be able to store and re-use the images from a central location for future pipeline runs.
+   > - If you are using `conda`, it is highly recommended to use the [`NXF_CONDA_CACHEDIR` or `conda.cacheDir`](https://www.nextflow.io/docs/latest/conda.html) settings to store the environments in a central location for future pipeline runs.
 
 5. Start running your own analysis!
 
-    ```console
-    nextflow run qbic-pipelines/root-tissue-analysis -profile <docker/singularity/podman/shifter/charliecloud/conda/institute> --input folder
-    ```
+   ```console
+   nextflow run qbic-pipelines/root-tissue-analysis -profile <docker/singularity/podman/shifter/charliecloud/conda/institute> --input folder
+   ```
 
 ## Documentation
 
@@ -143,6 +142,7 @@ If you would like to contribute to this pipeline, please see the [contributing g
 ## Citations
 
 <!-- TODO nf-core: Add bibliography of tools and data used in your pipeline -->
+
 An extensive list of references for the tools used by the pipeline can be found in the [`CITATIONS.md`](CITATIONS.md) file.
 
 > Ewels PA, Peltzer A, Fillinger S, Patel H, Alneberg J, Wilm A, Garcia MU, Di Tommaso P, Nahnsen S. **The nf-core framework for community-curated bioinformatics pipelines.** Nat Biotechnol. 2020 Mar;38(3):276-278. doi: [10.1038/s41587-020-0439-x](https://dx.doi.org/10.1038/s41587-020-0439-x). PubMed PMID: 32055031.

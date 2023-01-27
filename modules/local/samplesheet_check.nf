@@ -22,7 +22,7 @@ process SAMPLESHEET_CHECK {
     output:
     path '*inputs'
 
-    script: // This script is bundled with the pipeline, in nf-core/rts/bin/
+    script: // This script is bundled with the pipeline, in nf-core/nfroot/bin/
     """
     check_samplesheet.py \\
         $samplesheet \\

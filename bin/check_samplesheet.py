@@ -50,10 +50,10 @@ def check_samplesheet(file_in: str, file_out):
     """
     if ".tar.gz" in file_in:
         file = tarfile.open(name=file_in, mode="r|gz")
-        file.extractall('./data/')
+        file.extractall("./data/")
         file.close()
         file_in = glob("./data/*")[0]
-    with open(os.path.join(f'{file_in}', 'metadata.csv'), mode='r') as metadata:
+    with open(os.path.join(f"{file_in}", "metadata.csv"), mode="r") as metadata:
         csv_reader = csv.DictReader(metadata)
         for row in csv_reader:
             if not ("Filename" in row.keys() and "Treatment" in row.keys() and "Breeding Line" in row.keys()):

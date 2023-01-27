@@ -1,4 +1,3 @@
-params.options = [:]
 
 include { SAMPLESHEET_CHECK } from '../../modules/local/samplesheet_check' addParams( options: params.options )
 
@@ -15,4 +14,3 @@ workflow INPUT_CHECK {
     emit:
     reads // channel: [ val(meta), [ reads ] ]
 }
-

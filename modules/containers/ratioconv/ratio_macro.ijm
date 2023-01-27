@@ -29,7 +29,6 @@ for (i=0; i<fileList.length; i++) {
         inFileCut = lengthOf(file)-4;
         inFile=substring(file,0,inFileCut);
         outFileTemp = outDir + fileList[i];
-        
         cut=lengthOf(outFileTemp)-4;
         if (endsWith(fileList[i], ".ome.tif")){
             cut=lengthOf(outFileTemp)-8;
@@ -88,5 +87,4 @@ for (i=0; i<fileList.length; i++) {
         run("Close All");
     }
 }
-
 run("Quit");

@@ -11,22 +11,23 @@ from rich import print, traceback
 
 
 @click.command()
-@click.option('-m', '--meta', required=True, type=str, help='Path to metadata file')
-@click.option('-r', '--ratios', required=True, type=str, help='Path to ratios')
-@click.option('-s', '--segs', required=True, type=str, help='Path to segmentations')
-@click.option('-o', '--output', default="./", type=str, help='Output path')
+@click.option("-m", "--meta", required=True, type=str, help="Path to metadata file")
+@click.option("-r", "--ratios", required=True, type=str, help="Path to ratios")
+@click.option("-s", "--segs", required=True, type=str, help="Path to segmentations")
+@click.option("-o", "--output", default="./", type=str, help="Output path")
 def main(meta: str, ratios: str, segs: str, output: str):
     """Command-line interface for rtsstat"""
 
-    print(r"""[bold blue]
+    print(
+        r"""[bold blue]
         rtsstat
-        """)
+        """
+    )
 
-    print('[bold blue]Run [green]rtsstat --help [blue]for an overview of all commands\n')
+    print("[bold blue]Run [green]rtsstat --help [blue]for an overview of all commands\n")
     df = pd.read_csv(meta, header=0)
-    df["Ratio"], df["Zone"] = zip(*[(calc_ratio(ratios, segs, x)) for x in df['Filename']])
-    df.to_csv("ratios.tsv", sep = '\t', index=False)
-
+    df["Ratio"], df["Zone"] = zip(*[(calc_ratio(ratios, segs, x)) for x in df["Filename"]])
+    df.to_csv("ratios.tsv", sep="\t", index=False)
 
 
 def calc_ratio(ratios, segs, x):
@@ -36,7 +37,7 @@ def calc_ratio(ratios, segs, x):
     ratio_ee = extract_ph(ratio_img, tif_img, 2)
     ratio_m = extract_ph(ratio_img, tif_img, 4)
     # Early elongation zone is generally a bit smaller in size.
-    if ratio_m > 1.25*ratio_ee:
+    if ratio_m > 1.25 * ratio_ee:
         ratio = ratio_m
         zone = "Meristematic Zone"
     else:

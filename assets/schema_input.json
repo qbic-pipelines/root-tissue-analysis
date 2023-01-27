@@ -13,9 +13,6 @@
                 "errorMessage": "Sample name must be provided and cannot contain spaces"
             }
         },
-        "required": [
-            "sample",
-            "fastq_1"
-        ]
+        "required": ["sample", "fastq_1"]
     }
 }

@@ -1,13 +1,13 @@
 /*
-========================================================================================
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
     VALIDATE INPUTS
-========================================================================================
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 */
 
 def summary_params = NfcoreSchema.paramsSummaryMap(workflow, params)
 
 // Validate input parameters
-WorkflowRts.initialise(params, log)
+WorkflowNfroot.initialise(params, log)
 
 // TODO nf-core: Add all file path parameters for the pipeline to the list below
 // Check input path parameters to see if they exist
@@ -18,22 +18,20 @@ for (param in checkPathParamList) { if (param) { file(param, checkIfExists: true
 if (params.input) { ch_input = file(params.input) } else { exit 1, 'Input samplesheet not specified!' }
 
 /*
-========================================================================================
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
     CONFIG FILES
-========================================================================================
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 */
 
 ch_ratioconv_config        = file("$projectDir/assets/ratioconv_config.yaml", checkIfExists: true)
 ch_ratioconv_custom_config = params.ratioconv_config ? Channel.fromPath(params.ratioconv_config) : Channel.empty()
 
 /*
-========================================================================================
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
     IMPORT LOCAL MODULES/SUBWORKFLOWS
-========================================================================================
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 */
 
-// Don't overwrite global params.modules, create a copy instead and use that within the main script.
-def modules = params.modules.clone()
 
 //
 // MODULE: Local to the pipeline
@@ -51,20 +49,20 @@ include { INPUT_CHECK } from '../subworkflows/local/input_check' addParams( opti
 ========================================================================================
 */
 
-def ratioconv_options   = modules['ratioconv']
-ratioconv_options.args += params.ratioconv_title ? Utils.joinModuleArgs(["--title \"$params.ratioconv_title\""]) : ''
 
 //
 // MODULE: Installed directly from nf-core/modules
 //
-include { ROOTSEG_PRED  } from '../modules/local/rootseg/main'  addParams( options: modules['rootseg'] )
-include { ROOTSEG_UNCERT  } from '../modules/local/rootseg/main'  addParams( options: modules['rootseg'] )
-include { ROOTSEG_GGCAM  } from '../modules/local/rootseg/main'  addParams( options: modules['rootseg'] )
-include { RTSSTAT  } from '../modules/local/rtsstat/main'  addParams( options: modules['rtsstat'] )
-include { RATIOCONV } from '../modules/local/ratioconv/main' addParams( options: ratioconv_options   )
-include { OMEOUT } from '../modules/local/omeout/main' addParams( options: modules['omeout']   )
-include { OMEOUT_UNCERT } from '../modules/local/omeout/main' addParams( options: modules['omeout']   )
-include { OMEOUT_GGCAM } from '../modules/local/omeout/main' addParams( options: modules['omeout']   )
+include { ROOTSEG_PRED  } from '../modules/local/rootseg/main'
+include { ROOTSEG_UNCERT  } from '../modules/local/rootseg/main'
+include { ROOTSEG_GGCAM  } from '../modules/local/rootseg/main'
+include { RTSSTAT  } from '../modules/local/rtsstat/main'
+include { RATIOCONV } from '../modules/local/ratioconv/main'
+include { OMEOUT } from '../modules/local/omeout/main'
+include { OMEOUT_UNCERT } from '../modules/local/omeout/main'
+include { OMEOUT_GGCAM } from '../modules/local/omeout/main'
+
+
 
 /*
 ========================================================================================
@@ -75,7 +73,7 @@ include { OMEOUT_GGCAM } from '../modules/local/omeout/main' addParams( options:
 // Info required for completion email and summary
 def ratioconv_report = []
 
-workflow RTS {
+workflow NFROOT {
 
     ch_software_versions = Channel.empty()
 
@@ -152,7 +150,7 @@ workflow RTS {
     //
     // MODULE: RatioConv
     //
-    workflow_summary    = WorkflowRts.paramsSummaryMultiqc(workflow, summary_params)
+    workflow_summary    = WorkflowNfroot.paramsSummaryMultiqc(workflow, summary_params)
     ch_workflow_summary = Channel.value(workflow_summary)
 
     ch_ratioconv_files = Channel.empty()
