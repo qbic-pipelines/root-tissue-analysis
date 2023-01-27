@@ -4,20 +4,20 @@
     "repos": {
         "https://github.com/nf-core/modules.git": {
             "modules": {
-                "nf-core": {
+                "local": {
                     "rootseg": {
-                        "branch": "master",
-                        "git_sha": "c8e35eb2055c099720a75538d1b8adb3fb5a464c",
+                        "branch": "dev",
+                        "git_sha": "39b1eb473d1299f1d47c01d9ace45beb2e3855ac",
                         "installed_by": ["modules"]
                     },
                     "rtsstat": {
-                        "branch": "master",
-                        "git_sha": "c8e35eb2055c099720a75538d1b8adb3fb5a464c",
+                        "branch": "dev",
+                        "git_sha": "ae10912234575bca9aca0cfd9fda75e5bf29609b",
                         "installed_by": ["modules"]
                     },
                     "ratioconv": {
-                        "branch": "master",
-                        "git_sha": "c8e35eb2055c099720a75538d1b8adb3fb5a464c",
+                        "branch": "dev",
+                        "git_sha": "39b1eb473d1299f1d47c01d9ace45beb2e3855ac",
                         "installed_by": ["modules"]
                     }
                 }
