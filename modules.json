@@ -2,7 +2,7 @@
     "name": "qbic-pipelines/root-tissue-analysis",
     "homePage": "https://github.com/qbic-pipelines/root-tissue-analysis",
     "repos": {
-        "https://github.com/qbic-pipelines/root-tissue-analysis": {
+        "https://github.com/qbic-pipelines/root-tissue-analysis.git": {
             "modules": {
                 "local": {
                     "rootseg": {
