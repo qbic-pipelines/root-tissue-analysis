@@ -52,8 +52,8 @@ jobs:
           docker tag qbicpipelines/rtarootseg:dev qbicpipelines/rtarootseg:dev
           docker pull qbicpipelines/rtaratioconv:dev
           docker tag qbicpipelines/rtaratioconv:dev qbicpipelines/rtaratioconv:dev
-          docker pull qbicpipelines/rtsstat:dev
-          docker tag qbicpipelines/rtsstat:dev qbicpipelines/rtsstat:dev
+          docker pull qbicpipelines/rtastat:dev
+          docker tag qbicpipelines/rtastat:dev qbicpipelines/rtsstat:dev
 
       - name: Install Nextflow
         uses: nf-core/setup-nextflow@v1
