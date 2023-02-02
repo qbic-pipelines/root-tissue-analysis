@@ -30,14 +30,36 @@ jobs:
       - name: Check out pipeline code
         uses: actions/checkout@v3
 
+      - name: Check if Dockerfiles changed
+        uses: technote-space/get-diff-action@v4
+        with:
+          FILES: |
+            modules/local/ratioconv/Dockerfile
+            modules/local/rootseg/Dockerfile
+            modules/local/rtsstat/Dockerfile
+
+      - name: Build new docker images
+        if: env.MATCHED_FILES
+        run: |
+          docker build --no-cache . -t modules/local/ratioconv
+          docker build --no-cache . -t modules/local/rootseg
+          docker build --no-cache . -t modules/local/rtsstat
+
+      - name: Pull docker image
+        if: ${{ !env.MATCHED_FILES }}
+        run: |
+          docker pull qbicpipelines/rtarootseg:dev
+          docker tag qbicpipelines/rtarootseg:dev qbicpipelines/rtarootseg:dev
+          docker pull qbicpipelines/rtaratioconv:dev
+          docker tag qbicpipelines/rtaratioconv:dev qbicpipelines/rtaratioconv:dev
+          docker pull qbicpipelines/rtsstat:dev
+          docker tag qbicpipelines/rtsstat:dev qbicpipelines/rtsstat:dev
+
       - name: Install Nextflow
         uses: nf-core/setup-nextflow@v1
         with:
           version: "${{ matrix.NXF_VER }}"
 
       - name: Run pipeline with test data
-        # TODO nf-core: You can customise CI pipeline run tests as required
-        # For example: adding multiple test runs with different parameters
-        # Remember that you can parallelise this by using strategy.matrix
         run: |
           nextflow run ${GITHUB_WORKSPACE} -profile test,docker --outdir ./results
