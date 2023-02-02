@@ -49,11 +49,11 @@ jobs:
         if: ${{ !env.MATCHED_FILES }}
         run: |
           docker pull qbicpipelines/rtarootseg:dev
-          docker tag qbicpipelines/rtarootseg:dev qbicpipelines/rtarootseg:dev
+          docker tag qbicpipelines/rtarootseg:dev qbicpipelines/rtarootseg:1.0.0
           docker pull qbicpipelines/rtaratioconv:dev
-          docker tag qbicpipelines/rtaratioconv:dev qbicpipelines/rtaratioconv:dev
+          docker tag qbicpipelines/rtaratioconv:dev qbicpipelines/rtaratioconv:1.0.0
           docker pull qbicpipelines/rtastat:dev
-          docker tag qbicpipelines/rtastat:dev qbicpipelines/rtastat:dev
+          docker tag qbicpipelines/rtastat:dev qbicpipelines/rtastat:1.0.0
 
       - name: Install Nextflow
         uses: nf-core/setup-nextflow@v1

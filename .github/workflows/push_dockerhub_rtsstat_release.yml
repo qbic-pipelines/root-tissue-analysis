@@ -19,7 +19,7 @@ jobs:
         uses: actions/checkout@v2
 
       - name: Build new docker image
-        run: docker build --no-cache ./modules/local/ratioconv/ -t qbicpipelines/rtastat:dev
+        run: docker build --no-cache ./modules/local/ratioconv/ -t qbicpipelines/rtastat:latest
 
       - name: Push docker image to DockerHub (dev)
         run: |
