@@ -20,7 +20,7 @@ jobs:
         uses: actions/checkout@v2
 
       - name: Build new docker image
-        run: docker build --no-cache ./modules/containers/rtsstat/ -t qbicpipelines/rtastat:dev
+        run: docker build --no-cache ./modules/local/rtsstat/ -t qbicpipelines/rtastat:dev
 
       - name: Push docker image to DockerHub (dev)
         run: |
