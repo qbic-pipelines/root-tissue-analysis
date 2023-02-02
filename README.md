@@ -70,7 +70,7 @@ Sample input data: [`Testdata`](https://github.com/qbic-pipelines/root-tissue-an
 
 #### Steps
 
-1. Fiji macro for ratimeric image conversion ([`RATIOCONV`])
+1. Fiji macro for ratiomeric image conversion ([`RATIOCONV`])
 
    - `RATIOCONV` container: https://hub.docker.com/r/qbicpipelines/rtaratioconv
 
