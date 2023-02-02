@@ -36,14 +36,14 @@ jobs:
           FILES: |
             modules/local/ratioconv/Dockerfile
             modules/local/rootseg/Dockerfile
-            modules/local/rtsstat/Dockerfile
+            modules/local/rtastat/Dockerfile
 
       - name: Build new docker images
         if: env.MATCHED_FILES
         run: |
           docker build --no-cache . -t modules/local/ratioconv
           docker build --no-cache . -t modules/local/rootseg
-          docker build --no-cache . -t modules/local/rtsstat
+          docker build --no-cache . -t modules/local/rtastat
 
       - name: Pull docker image
         if: ${{ !env.MATCHED_FILES }}
@@ -53,7 +53,7 @@ jobs:
           docker pull qbicpipelines/rtaratioconv:dev
           docker tag qbicpipelines/rtaratioconv:dev qbicpipelines/rtaratioconv:dev
           docker pull qbicpipelines/rtastat:dev
-          docker tag qbicpipelines/rtastat:dev qbicpipelines/rtsstat:dev
+          docker tag qbicpipelines/rtastat:dev qbicpipelines/rtastat:dev
 
       - name: Install Nextflow
         uses: nf-core/setup-nextflow@v1

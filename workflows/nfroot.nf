@@ -56,7 +56,7 @@ include { INPUT_CHECK } from '../subworkflows/local/input_check' addParams( opti
 include { ROOTSEG_PRED  } from '../modules/local/rootseg/main'
 include { ROOTSEG_UNCERT  } from '../modules/local/rootseg/main'
 include { ROOTSEG_GGCAM  } from '../modules/local/rootseg/main'
-include { RTSSTAT  } from '../modules/local/rtsstat/main'
+include { RTASTAT  } from '../modules/local/rtastat/main'
 include { RATIOCONV } from '../modules/local/ratioconv/main'
 include { OMEOUT } from '../modules/local/omeout/main'
 include { OMEOUT_UNCERT } from '../modules/local/omeout/main'
@@ -119,7 +119,7 @@ workflow NFROOT {
         ROOTSEG_GGCAM.out.pred_ggcam
     )
 
-    RTSSTAT(
+    RTASTAT(
         INPUT_CHECK.out.reads,
         RATIOCONV.out.ratios,
         RATIOCONV.out.brightfields,
@@ -129,7 +129,7 @@ workflow NFROOT {
         OMEOUT_GGCAM.out.omeout
     )
 
-    
+
     //ch_software_versions = ch_software_versions.mix(ROOTSEG_PRED.out.version.first().ifEmpty(null))
 
     //

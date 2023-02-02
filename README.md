@@ -81,9 +81,9 @@ Sample input data: [`Testdata`](https://github.com/qbic-pipelines/root-tissue-an
 
 3. Export output images in OME-TIFF format ([`OMEOUT`])
 
-4. Calculate statistics and write pipeline report ([`RTSSTAT`])
+4. Calculate statistics and write pipeline report ([`rtastat`])
 
-   - `RTSSTAT` container: https://hub.docker.com/r/qbicpipelines/rtastat
+   - `rtastat` container: https://hub.docker.com/r/qbicpipelines/rtastat
 
 ## Quick Start
 

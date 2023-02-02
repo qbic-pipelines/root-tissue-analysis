@@ -16,15 +16,15 @@ from rich import print, traceback
 @click.option("-s", "--segs", required=True, type=str, help="Path to segmentations")
 @click.option("-o", "--output", default="./", type=str, help="Output path")
 def main(meta: str, ratios: str, segs: str, output: str):
-    """Command-line interface for rtsstat"""
+    """Command-line interface for rtastat"""
 
     print(
         r"""[bold blue]
-        rtsstat
+        rtastat
         """
     )
 
-    print("[bold blue]Run [green]rtsstat --help [blue]for an overview of all commands\n")
+    print("[bold blue]Run [green]rtastat --help [blue]for an overview of all commands\n")
     df = pd.read_csv(meta, header=0)
     df["Ratio"], df["Zone"] = zip(*[(calc_ratio(ratios, segs, x)) for x in df["Filename"]])
     df.to_csv("ratios.tsv", sep="\t", index=False)
