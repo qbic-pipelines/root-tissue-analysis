@@ -31,7 +31,6 @@ def main(imgs: str, ratios: str, segs: str, output: str):
 
     img_list = glob(os.path.join(imgs, "*"))
     for img_path in img_list:
-
         print(img_path)
         img_name_base = os.path.splitext(os.path.basename(img_path))[0]
 
