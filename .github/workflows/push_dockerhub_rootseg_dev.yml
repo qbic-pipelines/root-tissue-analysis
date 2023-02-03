@@ -22,7 +22,7 @@ jobs:
       - name: Build new docker image
         run: docker build --no-cache ./modules/local/rootseg/ -t qbicpipelines/rtarootseg:dev
 
-      - name: Push docker image to DockerHub (main)
+      - name: Push docker image to DockerHub (dev)
         run: |
           echo "$DOCKERHUB_PASS" | docker login -u "$DOCKERHUB_USERNAME" --password-stdin
           docker push qbicpipelines/rtarootseg:dev
