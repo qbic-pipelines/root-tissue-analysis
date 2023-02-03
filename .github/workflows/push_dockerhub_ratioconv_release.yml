@@ -21,7 +21,7 @@ jobs:
       - name: Build new docker image
         run: docker build --no-cache ./modules/local/ratioconv/ -t qbicpipelines/rtaratioconv:latest
 
-      - name: Push docker image to DockerHub (dev)
+      - name: Push docker image to DockerHub (release)
         run: |
           echo "$DOCKERHUB_PASS" | docker login -u "$DOCKERHUB_USERNAME" --password-stdin
           docker push qbicpipelines/rtaratioconv:latest
