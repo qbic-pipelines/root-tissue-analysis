@@ -10,7 +10,7 @@ process ROOTSEG_PRED {
     publishDir "${params.outdir}",
         mode: params.publish_dir_mode,
         saveAs: { filename -> saveFiles(filename:filename, options:params.options, publish_dir:getSoftwareName(task.process), meta:meta, publish_by_meta:['id']) }
-    container "qbicpipelines/rtarootseg:1.0.0"
+    container "ghcr.io/qbic-pipelines/rtarootseg:dev"
 
     input:
     path(brightfields)
