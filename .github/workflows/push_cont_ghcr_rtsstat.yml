@@ -10,7 +10,7 @@ on:
 
 jobs:
   push_github:
-    name: Push new Docker image to GHCR
+    name: Push new rtastat image to GHCR
     runs-on: ubuntu-latest
     # Only run for the qbic-pipelines repo, for releases and merged PRs
     if: ${{ github.repository == 'qbic-pipelines/root-tissue-analysis' }}
