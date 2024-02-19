@@ -12,7 +12,7 @@
 
 - [RootSeg](https://github.com/qbic-pipelines/rts-prediction-package)
 
-  > Heumos, L., Ehmele, P., Cuellar, L. K., Menden, K., Miller, E., Lemke, S., Gabernet, G., & Nahnsen, S. (2021). mlf-core: a framework for deterministic machine learning. Bioinformatics , 39(4). doi: [10.1093/bioinformatics/btad164](https://doi.org/10.1093/bioinformatics/btad164).
+  > Heumos, L., Ehmele, P., Cuellar, L. K., Menden, K., Miller, E., Lemke, S., Gabernet, G., & Nahnsen, S. (2021). mlf-core: a framework for deterministic machine learning. Bioinformatics, 39(4). doi: [10.1093/bioinformatics/btad164](https://doi.org/10.1093/bioinformatics/btad164).
 
   - **Training module:** https://github.com/qbic-pipelines/root-tissue-segmentation-core
 
