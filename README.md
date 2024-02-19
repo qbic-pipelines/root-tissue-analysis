@@ -137,6 +137,6 @@ An extensive list of references for the tools used by the pipeline can be found 
 
 > Ewels PA, Peltzer A, Fillinger S, Patel H, Alneberg J, Wilm A, Garcia MU, Di Tommaso P, Nahnsen S. **The nf-core framework for community-curated bioinformatics pipelines.** Nat Biotechnol. 2020 Mar;38(3):276-278. doi: [10.1038/s41587-020-0439-x](https://dx.doi.org/10.1038/s41587-020-0439-x). PubMed PMID: 32055031.
 
-> Heumos, L., Ehmele, P., Cuellar, L. K., Menden, K., Miller, E., Lemke, S., Gabernet, G., & Nahnsen, S. (2021). **mlf-core: a framework for deterministic machine learning.** In arXiv [cs.MS]. arXiv. http://arxiv.org/abs/2104.07651
+> Heumos, L., Ehmele, P., Cuellar, L. K., Menden, K., Miller, E., Lemke, S., Gabernet, G., & Nahnsen, S. (2023). **mlf-core: a framework for deterministic machine learning.** Bioinformatics , 39(4). doi: [10.1093/bioinformatics/btad164](https://doi.org/10.1093/bioinformatics/btad164).
 
 > Barbez, E., Dünser, K., Gaidora, A., Lendl, T., & Busch, W. (2017). **Auxin steers root cell expansion via apoplastic pH regulation in Arabidopsis thaliana.** Proceedings of the National Academy of Sciences of the United States of America, 114(24), E4884–E4893.
