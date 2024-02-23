@@ -1,0 +1,38 @@
+name: Docker push of rtastat to GHCR
+# This builds the docker image and pushes it to GHCR
+# Runs on qbic-pipelines repo releases and push event to 'dev' branch (PR merges)
+on:
+  push:
+    branches:
+      - dev
+  release:
+    types: [published]
+
+jobs:
+  push_github:
+    name: Push new rtastat image to GHCR
+    runs-on: ubuntu-latest
+    # Only run for the qbic-pipelines repo, for releases and merged PRs
+    if: ${{ github.repository == 'qbic-pipelines/root-tissue-analysis' }}
+    steps:
+      - name: Check out pipeline code
+        uses: actions/checkout@v2
+
+      - name: Build new docker image
+        run: docker build --no-cache ./modules/local/rtastat/ -t ghcr.io/qbic-pipelines/rtastat:latest
+
+      - name: Log in to registry
+        # Update the personal access token to GITHUB_TOKEN
+        run: echo "${{ secrets.GITHUB_TOKEN }}" | docker login ghcr.io -u $ --password-stdin
+
+      - name: Push image to GHCR (dev)
+        if: ${{ github.event_name == 'push' }}
+        run: |
+          docker tag ghcr.io/qbic-pipelines/rtastat:latest ghcr.io/qbic-pipelines/rtastat:dev
+          docker push ghcr.io/qbic-pipelines/rtastat:dev
+
+      - name: Push image to GHCR (release)
+        if: ${{ github.event_name == 'release' }}
+        run: |
+          docker tag ghcr.io/qbic-pipelines/rtastat:latest ghcr.io/qbic-pipelines/rtastat:${{ github.event.release.tag_name }}
+          docker push ghcr.io/qbic-pipelines/rtastat:${{ github.event.release.tag_name }}

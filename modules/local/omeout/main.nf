@@ -10,7 +10,7 @@ process OMEOUT {
     publishDir "${params.outdir}",
         mode: params.publish_dir_mode,
         saveAs: { filename -> saveFiles(filename:filename, options:params.options, publish_dir:getSoftwareName(task.process), meta:meta, publish_by_meta:['id']) }
-    container "qbicpipelines/rtastat:1.0.0"
+    container 'ghcr.io/qbic-pipelines/rtastat:1.0.0'
 
     input:
     path(images)
@@ -35,7 +35,7 @@ process OMEOUT_UNCERT {
     publishDir "${params.outdir}",
         mode: params.publish_dir_mode,
         saveAs: { filename -> saveFiles(filename:filename, options:params.options, publish_dir:getSoftwareName(task.process), meta:meta, publish_by_meta:['id']) }
-    container "qbicpipelines/rtastat:dev"
+    container 'ghcr.io/qbic-pipelines/rtastat:1.0.0'
 
     input:
     path(images)
@@ -59,7 +59,7 @@ process OMEOUT_GGCAM {
     publishDir "${params.outdir}",
         mode: params.publish_dir_mode,
         saveAs: { filename -> saveFiles(filename:filename, options:params.options, publish_dir:getSoftwareName(task.process), meta:meta, publish_by_meta:['id']) }
-    container "qbicpipelines/rtastat:dev"
+    container 'ghcr.io/qbic-pipelines/rtastat:1.0.0'
 
     input:
     path(images)
